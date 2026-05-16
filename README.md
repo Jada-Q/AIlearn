@@ -12,6 +12,10 @@
 
 - [01 — Vibe coding 作为一生职业：心态 / 技术 / 护城河](./docs/01-vibe-coding-as-lifetime-career.md)
 
+### 行业判断与方法论
+
+- [02 — Simon Willison《AI state of the union》对我最有用的 10 条](./docs/02-simon-willison-ai-state-of-union.md)
+
 ---
 
 ## 关于这份笔记
