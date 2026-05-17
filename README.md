@@ -15,6 +15,7 @@
 ### 行业判断与方法论
 
 - [02 — Simon Willison《AI state of the union》对我最有用的 10 条](./docs/02-simon-willison-ai-state-of-union.md)
+- [03 — 自建 Mac app 过夜消失：从一次故障到 5 层自动化架构](./docs/03-mac-app-overnight-disappear-postmortem.md)
 
 ---
 
