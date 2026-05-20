@@ -18,6 +18,12 @@
 - [03 — 自建 Mac app 过夜消失：从一次故障到 5 层自动化架构](./docs/03-mac-app-overnight-disappear-postmortem.md)
 - [04 — Bug 分类决定工具选择：用 TDD 治所有 bug = 用螺丝刀拧所有螺丝](./docs/04-bug-classification-tool-selection.md)
 
+### Vibe Coding 错误
+
+> 翻车后提炼的工作流通则。每条都是具体事故 → 根因分析 → 可固化为下次防护规则。
+
+- [05 — UI 改动方向反掉：3 条 safeguards 修复回路（mockup / canary / channel-aware verify）](./docs/05-ui-change-safeguards.md)
+
 ---
 
 ## 关于这份笔记
