@@ -24,6 +24,7 @@
 > 翻车后提炼的工作流通则。每条都是具体事故 → 根因分析 → 可固化为下次防护规则。
 
 - [05 — UI 改动方向反掉：3 条 safeguards 修复回路（mockup / canary / channel-aware verify）](./docs/05-ui-change-safeguards.md)
+- [07 — 分诊 > 写死规则：有些判断本来就没有标准答案（四版受控实验）](./docs/07-triage-over-stricter-rules.md)
 
 ---
 
