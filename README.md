@@ -18,6 +18,7 @@
 - [03 — 自建 Mac app 过夜消失：从一次故障到 5 层自动化架构](./docs/03-mac-app-overnight-disappear-postmortem.md)
 - [04 — Bug 分类决定工具选择：用 TDD 治所有 bug = 用螺丝刀拧所有螺丝](./docs/04-bug-classification-tool-selection.md)
 - [06 — 守住判断层：AI 时代如何构建有效验证机制](./docs/06-judgment-layer-verification.md)
+- [08 — 撞到物理天花板，就换框架别再调参数：一次实时翻译工具复盘](./docs/08-reframe-at-physical-ceiling.md)
 
 ### Vibe Coding 错误
 
