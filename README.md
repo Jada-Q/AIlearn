@@ -26,6 +26,7 @@
 
 - [05 — UI 改动方向反掉：3 条 safeguards 修复回路（mockup / canary / channel-aware verify）](./docs/05-ui-change-safeguards.md)
 - [07 — 分诊 > 写死规则：有些判断本来就没有标准答案（四版受控实验）](./docs/07-triage-over-stricter-rules.md)
+- [09 — 路由 > 切换：带状态的并发资源不要原地切换（打字翻译方向切换失败 3 次的复盘）](./docs/09-route-over-switch.md)
 
 ---
 
