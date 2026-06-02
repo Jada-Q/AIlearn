@@ -29,6 +29,7 @@
 - [05 — UI 改动方向反掉：3 条 safeguards 修复回路（mockup / canary / channel-aware verify）](./docs/05-ui-change-safeguards.md)
 - [07 — 分诊 > 写死规则：有些判断本来就没有标准答案（四版受控实验）](./docs/07-triage-over-stricter-rules.md)
 - [09 — 路由 > 切换：带状态的并发资源不要原地切换（打字翻译方向切换失败 3 次的复盘）](./docs/09-route-over-switch.md)
+- [12 — 从官方 algorithmic-art skill 到一个生成艺术系列：方法与四个真实 bug（p5 生命周期 / 退化参数 / 工具失配 / bbox 居中）](./docs/12-algorithmic-art-to-series.md)
 
 ---
 
