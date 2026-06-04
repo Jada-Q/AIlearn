@@ -32,6 +32,10 @@
 - [12 — 从官方 algorithmic-art skill 到一个生成艺术系列：方法与四个真实 bug（p5 生命周期 / 退化参数 / 工具失配 / bbox 居中）](./docs/12-algorithmic-art-to-series.md)
 - [13 — 数据驱动生成艺术 + 把它真正落地：5 个工程与品味判断（数据源 / API 硬约束 / 算法配情感 / 移植非引入 / git cross-check）](./docs/13-data-driven-generative-art-and-shipping.md)
 
+### 数据安全
+
+- [14 — 搬到硬盘 ≠ 备份：一人公司的数据安全系统（3-2-1 / 上云前自加密 / 跨盘搬运避坑）](./docs/14-move-is-not-backup.md)
+
 ---
 
 ## 关于这份笔记
