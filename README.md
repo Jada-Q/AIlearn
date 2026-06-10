@@ -32,6 +32,7 @@
 - [12 — 从官方 algorithmic-art skill 到一个生成艺术系列：方法与四个真实 bug（p5 生命周期 / 退化参数 / 工具失配 / bbox 居中）](./docs/12-algorithmic-art-to-series.md)
 - [13 — 数据驱动生成艺术 + 把它真正落地：5 个工程与品味判断（数据源 / API 硬约束 / 算法配情感 / 移植非引入 / git cross-check）](./docs/13-data-driven-generative-art-and-shipping.md)
 - [15 — 冷热路径验证盲区：「我验证过了」≠「在用户真实路径上验证过」（常开型应用 / 缓存失效 / 让 stale 可见）](./docs/15-cold-vs-warm-path-verification.md)
+- [16 — 假绿灯：TDD 防「算错」，smoke test 防「环境不对」（一次 ffmpeg 找不到的复盘）](./docs/16-false-green-tdd-vs-smoke-test.md)
 
 ### 数据安全
 
