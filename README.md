@@ -33,6 +33,7 @@
 - [13 — 数据驱动生成艺术 + 把它真正落地：5 个工程与品味判断（数据源 / API 硬约束 / 算法配情感 / 移植非引入 / git cross-check）](./docs/13-data-driven-generative-art-and-shipping.md)
 - [15 — 冷热路径验证盲区：「我验证过了」≠「在用户真实路径上验证过」（常开型应用 / 缓存失效 / 让 stale 可见）](./docs/15-cold-vs-warm-path-verification.md)
 - [16 — 假绿灯：TDD 防「算错」，smoke test 防「环境不对」（一次 ffmpeg 找不到的复盘）](./docs/16-false-green-tdd-vs-smoke-test.md)
+- [17 — AI 说「完成了」时你该问什么：loop 工程的两个陷阱（完成声明≠端到端验证 / 自动化复杂度边际递减）](./docs/17-ai-done-claims-and-loop-complexity.md)
 
 ### 数据安全
 
