@@ -21,6 +21,7 @@
 - [04 — Bug 分类决定工具选择：用 TDD 治所有 bug = 用螺丝刀拧所有螺丝](./docs/04-bug-classification-tool-selection.md)
 - [06 — 守住判断层：AI 时代如何构建有效验证机制](./docs/06-judgment-layer-verification.md)
 - [08 — 撞到物理天花板，就换框架别再调参数：一次实时翻译工具复盘](./docs/08-reframe-at-physical-ceiling.md)
+- [18 — 把设计品味变成可测的科学：一场 20 轮 60 评审的盲测实验](./docs/18-design-theory-blind-test.md)
 
 ### Vibe Coding 错误
 
