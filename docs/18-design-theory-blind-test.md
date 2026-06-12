@@ -80,5 +80,5 @@
 
 ## Sources
 
-- 实验全档案（22 个版本、60 份判词、预注册文件）：本地 gene-extractor/experiment-2026-06-12/
+- 实验全档案（22 个版本截图、60 份判词、预注册文件、可直开的 A/B 页面与最终 8.0 页面）：**[Jada-Q/design-theory-blind-test](https://github.com/Jada-Q/design-theory-blind-test)**
 - 评委与建站全程由 Claude Code agent 完成；理论语料为本人设计库的 54 张 DNA 分析卡
