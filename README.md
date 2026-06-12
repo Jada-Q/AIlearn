@@ -45,6 +45,7 @@
 
 - [uu-01 — 共享环境观察者效应：当你的点击变成 AI 的"灵异 bug"（+ 语音静默纠错层 / 公开复刻署名）](./uu/01-shared-environment-observer-effect.md)
 - [uu-02 — 第三方资产引入没有 license 检查这道门：唯一完全静默的缺陷](./uu/02-third-party-asset-license-blindspot.md)
+- [uu-03 — 自评分循环的循环性：全绿指标买不来心动](./uu/03-self-scoring-circularity.md)
 
 ---
 
