@@ -47,6 +47,7 @@
 - [uu-02 — 第三方资产引入没有 license 检查这道门：唯一完全静默的缺陷](./uu/02-third-party-asset-license-blindspot.md)
 - [uu-03 — 自评分循环的循环性：全绿指标买不来心动](./uu/03-self-scoring-circularity.md)
 - [uu-04 — 建好了分发流水线，却没按那个 5 秒的发布键](./uu/04-building-the-pipeline-instead-of-shipping.md)
+- [uu-05 — 定制了一个自己已经拥有的工具：库存对决策不可见就等于没有](./uu/05-building-what-you-already-own.md)
 
 ---
 
