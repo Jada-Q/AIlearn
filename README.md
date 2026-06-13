@@ -50,6 +50,7 @@
 - [uu-04 — 建好了分发流水线，却没按那个 5 秒的发布键](./uu/04-building-the-pipeline-instead-of-shipping.md)
 - [uu-05 — 定制了一个自己已经拥有的工具：库存对决策不可见就等于没有](./uu/05-building-what-you-already-own.md)
 - [uu-06 — 验证闸门只守"新建"，"改进/打磨"从缺口溜走（+ AI 快执行抹平了本该让你暂停的摩擦）](./uu/06-improvement-bypasses-the-validation-gate.md)
+- [uu-07 — AI 产品的差异化在判断力不在视觉效果（+ 功能难度≠用户感知价值 / 约束先于需求 / 质量基准线）](./uu/07-ai-product-value-is-in-judgment-not-visual-effects.md)
 
 ---
 
