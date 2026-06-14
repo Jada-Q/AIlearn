@@ -52,6 +52,7 @@
 - [uu-06 — 验证闸门只守"新建"，"改进/打磨"从缺口溜走（+ AI 快执行抹平了本该让你暂停的摩擦）](./uu/06-improvement-bypasses-the-validation-gate.md)
 - [uu-07 — AI 产品的差异化在判断力不在视觉效果（+ 功能难度≠用户感知价值 / 约束先于需求 / 质量基准线）](./uu/07-ai-product-value-is-in-judgment-not-visual-effects.md)
 - [uu-08 — 优化目标指令：委托方看见结果，看不见被丢弃的路径](./uu/08-optimization-instruction-black-box.md)
+- [uu-09 — 结构型需求不该交给 LLM：生成 vs 后处理的选择盲点](./uu/09-llm-vs-postprocess-routing.md)
 
 ---
 
