@@ -22,6 +22,7 @@
 - [06 — 守住判断层：AI 时代如何构建有效验证机制](./docs/06-judgment-layer-verification.md)
 - [08 — 撞到物理天花板，就换框架别再调参数：一次实时翻译工具复盘](./docs/08-reframe-at-physical-ceiling.md)
 - [18 — 把设计品味变成可测的科学：一场 20 轮 60 评审的盲测实验](./docs/18-design-theory-blind-test.md)
+- [19 — 视觉效果选型、质量基准线与判断力培养：一次黑客松连续三次翻车的三层复盘](./docs/19-visual-effects-model-selection-and-judgment-cultivation.md)
 
 ### Vibe Coding 错误
 
