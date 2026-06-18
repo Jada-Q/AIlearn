@@ -55,6 +55,7 @@
 - [uu-08 — 优化目标指令：委托方看见结果，看不见被丢弃的路径](./uu/08-optimization-instruction-black-box.md)
 - [uu-09 — 结构型需求不该交给 LLM：生成 vs 后处理的选择盲点](./uu/09-llm-vs-postprocess-routing.md)
 - [uu-10 — 工具失败 vs 系统推送：两种心理模型的诊断分岔](./uu/10-tool-failure-mental-model.md)
+- [uu-11 — 未收尾就切换 + "多生成几个选项"的隐性成本](./uu/11-unfinished-task-switching.md)
 
 ---
 
