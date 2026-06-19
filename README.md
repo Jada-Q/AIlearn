@@ -56,6 +56,7 @@
 - [uu-09 — 结构型需求不该交给 LLM：生成 vs 后处理的选择盲点](./uu/09-llm-vs-postprocess-routing.md)
 - [uu-10 — 工具失败 vs 系统推送：两种心理模型的诊断分岔](./uu/10-tool-failure-mental-model.md)
 - [uu-11 — 未收尾就切换 + "多生成几个选项"的隐性成本](./uu/11-unfinished-task-switching.md)
+- [uu-12 — "我的文件就在桌面"：home 目录不是桌面，交付物落点的隐形错位（+ 分发包命名与"给谁用"脱钩）](./uu/12-home-folder-is-not-the-desktop.md)
 
 ---
 
