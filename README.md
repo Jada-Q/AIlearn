@@ -58,6 +58,7 @@
 - [uu-11 — 未收尾就切换 + "多生成几个选项"的隐性成本](./uu/11-unfinished-task-switching.md)
 - [uu-12 — "我的文件就在桌面"：home 目录不是桌面，交付物落点的隐形错位（+ 分发包命名与"给谁用"脱钩）](./uu/12-home-folder-is-not-the-desktop.md)
 - [uu-13 — 系统状态全盲：你只监控想得到的，想不到的正好咬你](./uu/13-system-state-blindness.md)
+- [uu-14 — 全量上書きファイルに「骤減検知」がない：静默データ損失の死角](./uu/14-single-file-metadata-silent-corruption.md)
 
 ---
 
