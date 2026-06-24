@@ -60,6 +60,7 @@
 - [uu-13 — 系统状态全盲：你只监控想得到的，想不到的正好咬你](./uu/13-system-state-blindness.md)
 - [uu-14 — 全量上書きファイルに「骤減検知」がない：静默データ損失の死角](./uu/14-single-file-metadata-silent-corruption.md)
 - [uu-15 — 盲点不是"不知道"，是"知道了也不动"](./uu/15-execution-avoidance-not-ignorance.md)
+- [uu-16 — 把"开发工具"当生产后端：CLI 当 runtime 的隐形雷](./uu/16-cli-tool-as-runtime-backend.md)
 
 ---
 
