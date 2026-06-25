@@ -64,6 +64,7 @@
 - [uu-17 — 探索快感盖过需求验证：为"自用工具"越投越深，需求只验证了一下午](./uu/17-exploration-over-need-validation.md)
 - [uu-18 — 同一套 Claude，两台机器不是一个大脑：跨机器的治理不会自动跟着走](./uu/18-cross-machine-config-divergence.md)
 - [uu-19 — 验证的双重标准：我给 AI 立了铁律，自己执行时却零验证](./uu/19-self-verification-double-standard.md)
+- [uu-20 — 元盲点：复盘档案成了"反复观察同一盲点却从不收口"的地方（归档 ≠ 修复）](./uu/20-archive-observes-but-never-escalates.md)
 
 ---
 
