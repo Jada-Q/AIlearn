@@ -61,6 +61,7 @@
 - [uu-14 — 全量上書きファイルに「骤減検知」がない：静默データ損失の死角](./uu/14-single-file-metadata-silent-corruption.md)
 - [uu-15 — 盲点不是"不知道"，是"知道了也不动"](./uu/15-execution-avoidance-not-ignorance.md)
 - [uu-16 — 把"开发工具"当生产后端：CLI 当 runtime 的隐形雷](./uu/16-cli-tool-as-runtime-backend.md)
+- [uu-17 — 探索快感盖过需求验证：为"自用工具"越投越深，需求只验证了一下午](./uu/17-exploration-over-need-validation.md)
 
 ---
 
