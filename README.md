@@ -67,6 +67,7 @@
 - [uu-20 — 元盲点：复盘档案成了"反复观察同一盲点却从不收口"的地方（归档 ≠ 修复）](./uu/20-archive-observes-but-never-escalates.md)
 - [uu-21 — 监控显示正常，但"正常"是假的：会报喜的空转 + 叠成墙的门槛](./uu/21-false-green-idle-pipeline.md)
 - [uu-22 — "建"伪装成"进步"：专注 ≠ 在一个工具上无限堆功能（全程在建、零 dogfood）](./uu/22-building-disguised-as-progress.md)
+- [uu-23 — 用"换工具"回避"定义目标"：没有靶子，任何工具都脱靶（+ 不信自己已做的判断）](./uu/23-tool-shopping-without-a-target.md)
 
 ---
 
