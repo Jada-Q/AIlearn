@@ -72,6 +72,7 @@
 - [uu-25 — 抽象价值被它最差的载体劫持：舍不得的是原理，绑死在了产品上，于是养出僵尸项目](./uu/25-value-held-hostage-by-its-carrier.md)
 - [uu-26 — 你把质量问题归到「自己能碰的最后一步」，天花板却早在上游素材就封死了（手边杠杆偏误）](./uu/26-quality-ceiling-set-upstream.md)
 - [uu-27 — 你向一个工具打听它本身的功能，却忘了自己早已是它的深度用户（资产盲：产出 >> 盘点）](./uu/27-blind-to-your-own-assets.md)
+- [uu-28 — 你给自己产品写需求时会漏掉最大卖点：它对你太显然了（知识的诅咒，且只在看到成品时才发现）](./uu/28-curse-of-knowledge-underbrief.md)
 
 ---
 
