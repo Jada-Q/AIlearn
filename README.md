@@ -70,6 +70,7 @@
 - [uu-23 — 用"换工具"回避"定义目标"：没有靶子，任何工具都脱靶（+ 不信自己已做的判断）](./uu/23-tool-shopping-without-a-target.md)
 - [uu-24 — 当"学习"变成"生产学习材料"：全程在学却零验证，把 ship 偷换成 build（同根第 4 次）](./uu/24-production-replaces-learning.md)
 - [uu-25 — 抽象价值被它最差的载体劫持：舍不得的是原理，绑死在了产品上，于是养出僵尸项目](./uu/25-value-held-hostage-by-its-carrier.md)
+- [uu-26 — 你把质量问题归到「自己能碰的最后一步」，天花板却早在上游素材就封死了（手边杠杆偏误）](./uu/26-quality-ceiling-set-upstream.md)
 
 ---
 
