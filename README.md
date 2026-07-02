@@ -76,6 +76,7 @@
 - [uu-29 — "我有这个痛"被当成了"我该造它"：痛存在 ≠ 你能靠它赚钱](./uu/29-pain-is-not-monetizable.md)
 - [uu-30 — 事实腐烂 vs 时间腐烂：sunset 日期防得住"记录老了"，防不住"记录已经不是真的"](./uu/30-fact-rot-vs-time-rot.md)
 - [uu-31 — 视觉惊艳 ≠ 底层结构能力](./uu/31-visual-output-is-not-structural-capability.md)
+- [uu-32 — 两套定价系统：给客户按价值定价，给自己按成本定价（定价知识不迁移到自我域）](./uu/32-two-pricing-systems-value-for-clients-cost-for-self.md)
 
 ---
 
