@@ -75,6 +75,7 @@
 - [uu-28 — 你给自己产品写需求时会漏掉最大卖点：它对你太显然了（知识的诅咒，且只在看到成品时才发现）](./uu/28-curse-of-knowledge-underbrief.md)
 - [uu-29 — "我有这个痛"被当成了"我该造它"：痛存在 ≠ 你能靠它赚钱](./uu/29-pain-is-not-monetizable.md)
 - [uu-30 — 事实腐烂 vs 时间腐烂：sunset 日期防得住"记录老了"，防不住"记录已经不是真的"](./uu/30-fact-rot-vs-time-rot.md)
+- [uu-31 — 视觉惊艳 ≠ 底层结构能力](./uu/31-visual-output-is-not-structural-capability.md)
 
 ---
 
