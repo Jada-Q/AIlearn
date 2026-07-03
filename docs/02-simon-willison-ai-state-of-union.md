@@ -74,7 +74,7 @@ Simon 维护 tools / research repo 积累可复用片段。
 
 中等经验工程师最危险（没深度专长可放大 + 没初学者增益）。
 
-→ 我已经在 vertical 护城河（FP / 宅建 / 簿記 / 建筑）+ product / agency 双保险上，但警惕"通用 vibe coder"是中等带。要么继续深耕 vertical knowledge，要么往 service business 走。
+→ 我已经在 vertical 护城河（FP2 / 建筑）+ product / agency 双保险上，但警惕"通用 vibe coder"是中等带。要么继续深耕 vertical knowledge，要么往 service business 走。
 
 ---
 
