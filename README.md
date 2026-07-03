@@ -77,6 +77,7 @@
 - [uu-30 — 事实腐烂 vs 时间腐烂：sunset 日期防得住"记录老了"，防不住"记录已经不是真的"](./uu/30-fact-rot-vs-time-rot.md)
 - [uu-31 — 视觉惊艳 ≠ 底层结构能力](./uu/31-visual-output-is-not-structural-capability.md)
 - [uu-32 — 两套定价系统：给客户按价值定价，给自己按成本定价（定价知识不迁移到自我域）](./uu/32-two-pricing-systems-value-for-clients-cost-for-self.md)
+- [uu-33 — 多媒体任务的锚点缺失，与"确认过≠验证过"的确认门陷阱](./uu/33-media-task-anchor-and-confirmation-gate.md)
 
 ---
 
