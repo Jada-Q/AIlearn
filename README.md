@@ -78,6 +78,7 @@
 - [uu-31 — 视觉惊艳 ≠ 底层结构能力](./uu/31-visual-output-is-not-structural-capability.md)
 - [uu-32 — 两套定价系统：给客户按价值定价，给自己按成本定价（定价知识不迁移到自我域）](./uu/32-two-pricing-systems-value-for-clients-cost-for-self.md)
 - [uu-33 — 多媒体任务的锚点缺失，与"确认过≠验证过"的确认门陷阱](./uu/33-media-task-anchor-and-confirmation-gate.md)
+- [uu-34 — 内部事实修正不会自动传播到公开副本（+ 卖伞人淋雨）](./uu/34-internal-fact-fixes-dont-reach-public-artifacts.md)
 
 ---
 
