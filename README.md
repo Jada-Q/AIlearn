@@ -79,6 +79,7 @@
 - [uu-32 — 两套定价系统：给客户按价值定价，给自己按成本定价（定价知识不迁移到自我域）](./uu/32-two-pricing-systems-value-for-clients-cost-for-self.md)
 - [uu-33 — 多媒体任务的锚点缺失，与"确认过≠验证过"的确认门陷阱](./uu/33-media-task-anchor-and-confirmation-gate.md)
 - [uu-34 — 内部事实修正不会自动传播到公开副本（+ 卖伞人淋雨）](./uu/34-internal-fact-fixes-dont-reach-public-artifacts.md)
+- [uu-35 — 生产反射穿了"学习/分享"的戏服：对一篇反过度生产的文章，我连续产出了三次](./uu/35-production-reflex-disguised-as-learning.md)
 
 ---
 
