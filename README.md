@@ -81,6 +81,7 @@
 - [uu-34 — 内部事实修正不会自动传播到公开副本（+ 卖伞人淋雨）](./uu/34-internal-fact-fixes-dont-reach-public-artifacts.md)
 - [uu-35 — 生产反射穿了"学习/分享"的戏服：对一篇反过度生产的文章，我连续产出了三次](./uu/35-production-reflex-disguised-as-learning.md)
 - [uu-36 — 完美交付冲在商业结构前面：打磨了十几轮，最后才问"这单怎么收钱"](./uu/36-polish-before-commercial-structure.md)
+- [uu-37 — 分发是反应式的：即便发，也是想起一个渠道发一个，没计划、没成功信号](./uu/37-distribution-is-reactive-not-systematic.md)
 
 ---
 
