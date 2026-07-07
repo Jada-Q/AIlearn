@@ -23,6 +23,7 @@
 - [08 — 撞到物理天花板，就换框架别再调参数：一次实时翻译工具复盘](./docs/08-reframe-at-physical-ceiling.md)
 - [18 — 把设计品味变成可测的科学：一场 20 轮 60 评审的盲测实验](./docs/18-design-theory-blind-test.md)
 - [19 — 视觉效果选型、质量基准线与判断力培养：一次黑客松连续三次翻车的三层复盘](./docs/19-visual-effects-model-selection-and-judgment-cultivation.md)
+- [20 — 省 token 从量自己的账本开始：热文教你装新工具，我搬走了 58KB 旧配置](./docs/20-token-arbitrage-audit-your-own-ledger.md)
 
 ### Vibe Coding 错误
 
