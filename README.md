@@ -86,6 +86,7 @@
 - [uu-38 — 统一的仪表盘诱导你用同一把尺子量所有东西：门面站的"0 数据"不是失败，是量错了](./uu/38-uniform-dashboard-wrong-yardstick.md)
 - [uu-39 — 上下文债务不可见：拿着热文找新工具，最大的浪费躺在自己配置里](./uu/39-context-debt-invisible-loading-semantics.md)
 - [uu-40 — 判断债：生产指令零延迟，判决请求排队四天——生产是判断的止痛药](./uu/40-judgment-debt.md)
+- [uu-41 — 分发者责任盲区：把 AI 生成物交出去的那一刻，你签了一份自己没看见的契约](./uu/41-distribution-liability-blindspot.md)
 
 ---
 
