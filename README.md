@@ -83,6 +83,7 @@
 - [uu-36 — 完美交付冲在商业结构前面：打磨了十几轮，最后才问"这单怎么收钱"](./uu/36-polish-before-commercial-structure.md)
 - [uu-37 — 分发是反应式的：即便发，也是想起一个渠道发一个，没计划、没成功信号](./uu/37-distribution-is-reactive-not-systematic.md)
 - [uu-38 — 统一的仪表盘诱导你用同一把尺子量所有东西：门面站的"0 数据"不是失败，是量错了](./uu/38-uniform-dashboard-wrong-yardstick.md)
+- [uu-39 — 上下文债务不可见：拿着热文找新工具，最大的浪费躺在自己配置里](./uu/39-context-debt-invisible-loading-semantics.md)
 
 ---
 
