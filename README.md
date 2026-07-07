@@ -90,6 +90,7 @@
 - [uu-41 — 分发者责任盲区：把 AI 生成物交出去的那一刻，你签了一份自己没看见的契约](./uu/41-distribution-liability-blindspot.md)
 - [uu-42 — 盲点会跟着你搬进解决方案：一次给监控系统做体检，挖出四个同族盲点](./uu/42-blindspots-copy-into-solutions.md)
 - [uu-43 — 校准发生在错误的执行环境 + 教训从不回扫存量](./uu/43-calibrate-in-target-environment.md)
+- [uu-44 — 你整理的是文件，喂养混乱的是制度：清理 state，不动 generator](./uu/44-cleanup-state-not-generator.md)
 - [uu-45 — 收藏方法 vs 跑轮次：陈述性知识的"已获得"错觉](./uu/45-collecting-methods-vs-running-reps.md)
 
 ---
