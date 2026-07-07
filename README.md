@@ -84,6 +84,7 @@
 - [uu-37 — 分发是反应式的：即便发，也是想起一个渠道发一个，没计划、没成功信号](./uu/37-distribution-is-reactive-not-systematic.md)
 - [uu-38 — 统一的仪表盘诱导你用同一把尺子量所有东西：门面站的"0 数据"不是失败，是量错了](./uu/38-uniform-dashboard-wrong-yardstick.md)
 - [uu-39 — 上下文债务不可见：拿着热文找新工具，最大的浪费躺在自己配置里](./uu/39-context-debt-invisible-loading-semantics.md)
+- [uu-40 — 判断债：生产指令零延迟，判决请求排队四天——生产是判断的止痛药](./uu/40-judgment-debt.md)
 
 ---
 
