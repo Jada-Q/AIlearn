@@ -92,6 +92,7 @@
 - [uu-43 — 校准发生在错误的执行环境 + 教训从不回扫存量](./uu/43-calibrate-in-target-environment.md)
 - [uu-44 — 你整理的是文件，喂养混乱的是制度：清理 state，不动 generator](./uu/44-cleanup-state-not-generator.md)
 - [uu-45 — 收藏方法 vs 跑轮次：陈述性知识的"已获得"错觉](./uu/45-collecting-methods-vs-running-reps.md)
+- [uu-46 — 输出形态是你的旋钮，不是 AI 的默认：透明度错觉让你以为脑中那幅图已经在字里](./uu/46-output-form-is-your-lever.md)
 
 ---
 
