@@ -97,6 +97,7 @@
 - [uu-48 — 在"给谁看/发去哪/什么算完成"定下来之前，别急着优化交付物：行动偏误让产出感替代了目标定义](./uu/48-define-destination-before-you-optimize.md)
 - [uu-49 — 你在批量造"以假乱真的东西"，却没问它做出来给谁、会不会踩线：执行层的爽感盖住了部署层的风险](./uu/49-what-is-this-asset-for.md)
 - [uu-50 — 卸载软件时，"删掉"的直觉边界比数据的真实边界小：厂商级共享目录 + 服务器端账户都在删除视野外](./uu/50-uninstall-boundary-blindspot.md)
+- [uu-51 — 盲点知识住在判例库里，不住在手上：学盲点的时刻和犯盲点的时刻同日发生而不相认](./uu/51-inert-blindspot-knowledge.md)
 
 ---
 
