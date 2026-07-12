@@ -101,6 +101,7 @@
 - [uu-51 — 盲点知识住在判例库里，不住在手上：学盲点的时刻和犯盲点的时刻同日发生而不相认](./uu/51-inert-blindspot-knowledge.md)
 - [uu-52 — 一天 8 个改动，用户 0 次使用：批量与反馈周期的错配](./uu/52-batch-size-vs-feedback-cycle.md)
 - [uu-53 — 新闻驱动的防御 + 授权了自己读不懂的权力](./uu/53-news-driven-defense.md)
+- [uu-54 — 持证 FP 不给自己做家计聆听：问"对我的影响"时没交出自己的暴露面](./uu/54-fp-no-self-intake.md)
 
 ---
 
