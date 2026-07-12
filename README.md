@@ -100,6 +100,7 @@
 - [uu-50 — 卸载软件时，"删掉"的直觉边界比数据的真实边界小：厂商级共享目录 + 服务器端账户都在删除视野外](./uu/50-uninstall-boundary-blindspot.md)
 - [uu-51 — 盲点知识住在判例库里，不住在手上：学盲点的时刻和犯盲点的时刻同日发生而不相认](./uu/51-inert-blindspot-knowledge.md)
 - [uu-52 — 一天 8 个改动，用户 0 次使用：批量与反馈周期的错配](./uu/52-batch-size-vs-feedback-cycle.md)
+- [uu-53 — 新闻驱动的防御 + 授权了自己读不懂的权力](./uu/53-news-driven-defense.md)
 
 ---
 
