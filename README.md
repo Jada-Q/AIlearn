@@ -102,6 +102,7 @@
 - [uu-52 — 一天 8 个改动，用户 0 次使用：批量与反馈周期的错配](./uu/52-batch-size-vs-feedback-cycle.md)
 - [uu-53 — 新闻驱动的防御 + 授权了自己读不懂的权力](./uu/53-news-driven-defense.md)
 - [uu-54 — 持证 FP 不给自己做家计聆听：问"对我的影响"时没交出自己的暴露面](./uu/54-fp-no-self-intake.md)
+- [uu-55 — 应募不是免费期权：搜索词暴露资产盲区 + 决策框架半程被执行冲动截断](./uu/55-applying-is-not-free-optionality.md)
 
 ---
 
