@@ -104,6 +104,7 @@
 - [uu-54 — 持证 FP 不给自己做家计聆听：问"对我的影响"时没交出自己的暴露面](./uu/54-fp-no-self-intake.md)
 - [uu-55 — 应募不是免费期权：搜索词暴露资产盲区 + 决策框架半程被执行冲动截断](./uu/55-applying-is-not-free-optionality.md)
 - [uu-56 — 首版验收里没有质量维度：功能过了 ≠ 质量看过了](./uu/56-first-delivery-quality-acceptance.md)
+- [uu-57 — 防线防编造，不防自己出题自己判卷：automation bias 三例](./uu/57-automation-bias-self-graded-exams.md)
 
 ---
 
