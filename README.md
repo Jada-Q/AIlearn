@@ -106,6 +106,7 @@
 - [uu-56 — 首版验收里没有质量维度：功能过了 ≠ 质量看过了](./uu/56-first-delivery-quality-acceptance.md)
 - [uu-57 — 防线防编造，不防自己出题自己判卷：automation bias 三例](./uu/57-automation-bias-self-graded-exams.md)
 - [uu-58 — 批准流水线：目的审计发生在交付之后（activity trap + McNamara fallacy）](./uu/58-activity-trap-approval-pipeline.md)
+- [uu-59 — 求职渠道在腐烂，巡检清单没覆盖它（transactive memory）](./uu/59-job-channel-rot-inventory-blindness.md)
 
 ---
 
