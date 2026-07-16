@@ -25,6 +25,7 @@
 - [19 — 视觉效果选型、质量基准线与判断力培养：一次黑客松连续三次翻车的三层复盘](./docs/19-visual-effects-model-selection-and-judgment-cultivation.md)
 - [20 — 省 token 从量自己的账本开始：热文教你装新工具，我搬走了 58KB 旧配置](./docs/20-token-arbitrage-audit-your-own-ledger.md)
 - [22 — 设计判断力不是玄学：Norman 框架评审自己的工具 + 素人培养判断力的五个动作](./docs/22-design-judgment-is-learnable.md)
+- [23 — 奥德修斯的桅杆：规则为什么拦不住你的 AI](./docs/23-odysseus-mast-forcing-function.md)
 
 ### Vibe Coding 错误
 
