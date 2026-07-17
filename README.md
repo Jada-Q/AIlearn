@@ -14,6 +14,16 @@
 - [10 — 和 AI 学技术：一次 1-2 个新概念的渐进式节奏](./docs/10-learning-tech-with-ai-pacing.md)
 - [11 — 当人人都会 Vibe Coding：差异化 = 离 AI 平均值的距离，不是奔向它的速度](./docs/11-differentiation-when-everyone-vibe-codes.md)
 
+### 希腊神话 × AI 系列（5 篇完结）
+
+> 五个神话 = 人机协作的五个岗位：约束 / 闭环 / 目标 / 警告 / 外力。每篇：Jada 的实锤 → 神话原型 → 公开科学锚点 → 可迁移检查动作。配双语视频。
+
+- [23 — 奥德修斯的桅杆：规则为什么拦不住你的 AI（约束）](./docs/23-odysseus-mast-forcing-function.md)
+- [25 — Echo 与 Narcissus：AI 自食的两种死法（闭环 · model collapse）](./docs/25-echo-narcissus-model-collapse.md)
+- [26 — 迈达斯之触：AI 把你的愿望字面执行的那一天（目标 · specification gaming）](./docs/26-midas-touch-specification-gaming.md)
+- [27 — 卡珊德拉的诅咒：AI 的警告为什么没人听（警告 · alarm fatigue）](./docs/27-cassandra-warnings-without-hands.md)
+- [28 — 皮格马利翁的雕像：为什么"看"救不活你的项目（外力 · ELIZA effect · 收官）](./docs/28-pygmalion-external-force.md)
+
 ### 行业判断与方法论
 
 - [02 — Simon Willison《AI state of the union》对我最有用的 10 条](./docs/02-simon-willison-ai-state-of-union.md)
@@ -25,8 +35,6 @@
 - [19 — 视觉效果选型、质量基准线与判断力培养：一次黑客松连续三次翻车的三层复盘](./docs/19-visual-effects-model-selection-and-judgment-cultivation.md)
 - [20 — 省 token 从量自己的账本开始：热文教你装新工具，我搬走了 58KB 旧配置](./docs/20-token-arbitrage-audit-your-own-ledger.md)
 - [22 — 设计判断力不是玄学：Norman 框架评审自己的工具 + 素人培养判断力的五个动作](./docs/22-design-judgment-is-learnable.md)
-- [23 — 奥德修斯的桅杆：规则为什么拦不住你的 AI](./docs/23-odysseus-mast-forcing-function.md)
-- [25 — Echo 与 Narcissus：AI 自食的两种死法（model collapse + 自评分闭环）](./docs/25-echo-narcissus-model-collapse.md)
 
 ### Vibe Coding 错误
 
