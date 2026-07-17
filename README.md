@@ -26,6 +26,7 @@
 - [20 — 省 token 从量自己的账本开始：热文教你装新工具，我搬走了 58KB 旧配置](./docs/20-token-arbitrage-audit-your-own-ledger.md)
 - [22 — 设计判断力不是玄学：Norman 框架评审自己的工具 + 素人培养判断力的五个动作](./docs/22-design-judgment-is-learnable.md)
 - [23 — 奥德修斯的桅杆：规则为什么拦不住你的 AI](./docs/23-odysseus-mast-forcing-function.md)
+- [25 — Echo 与 Narcissus：AI 自食的两种死法（model collapse + 自评分闭环）](./docs/25-echo-narcissus-model-collapse.md)
 
 ### Vibe Coding 错误
 
