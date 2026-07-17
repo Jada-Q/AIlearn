@@ -109,6 +109,7 @@
 - [uu-58 — 批准流水线：目的审计发生在交付之后（activity trap + McNamara fallacy）](./uu/58-activity-trap-approval-pipeline.md)
 - [uu-59 — 求职渠道在腐烂，巡检清单没覆盖它（transactive memory）](./uu/59-job-channel-rot-inventory-blindness.md)
 - [uu-60 — 设计者黑盒感 + 反馈真空期的功能囤积（illusion of explanatory depth + invisible labor）](./uu/60-builder-blackbox-feature-hoarding.md)
+- [uu-61 — 「发布」在脑中是按钮，在系统里是没验收过的链路 + 到期类资产没有雷达（last mile problem）](./uu/61-publish-button-and-expiry-blindness.md)
 
 ---
 
