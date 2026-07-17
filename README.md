@@ -40,6 +40,7 @@
 - [16 — 假绿灯：TDD 防「算错」，smoke test 防「环境不对」（一次 ffmpeg 找不到的复盘）](./docs/16-false-green-tdd-vs-smoke-test.md)
 - [17 — AI 说「完成了」时你该问什么：loop 工程的两个陷阱（完成声明≠端到端验证 / 自动化复杂度边际递减）](./docs/17-ai-done-claims-and-loop-complexity.md)
 - [21 — 定时任务里的 AI 助手为什么半夜罢工：换个执行环境，你的脚本就是另一个脚本（launchd 缺 USER / 报错走 stdout / set -e 杀死重试）](./docs/21-launchd-env-silent-cli-failures.md)
+- [24 — 「修好了」的幻觉：一个空环境变量骗过两次修复——修复宣告必须含根因一句话](./docs/24-empty-env-var-fixed-twice.md)
 
 ### 数据安全
 
