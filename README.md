@@ -121,6 +121,7 @@
 - [uu-60 — 设计者黑盒感 + 反馈真空期的功能囤积（illusion of explanatory depth + invisible labor）](./uu/60-builder-blackbox-feature-hoarding.md)
 - [uu-61 — 「发布」在脑中是按钮，在系统里是没验收过的链路 + 到期类资产没有雷达（last mile problem）](./uu/61-publish-button-and-expiry-blindness.md)
 - [uu-62 — 审稿门被连续成功无声侵蚀 + 「造 > 发」同根第 5 次触发升级（automation complacency）](./uu/62-gate-erosion-by-success.md)
+- [uu-63 — 当你把一个盲点自动化：从「手动只造不发」升级到「造了一台自动挖兔子洞的机器」（goal displacement / introspection illusion）](./uu/63-automating-the-blindspot.md)
 
 ---
 
