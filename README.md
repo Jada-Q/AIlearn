@@ -35,6 +35,7 @@
 - [19 — 视觉效果选型、质量基准线与判断力培养：一次黑客松连续三次翻车的三层复盘](./docs/19-visual-effects-model-selection-and-judgment-cultivation.md)
 - [20 — 省 token 从量自己的账本开始：热文教你装新工具，我搬走了 58KB 旧配置](./docs/20-token-arbitrage-audit-your-own-ledger.md)
 - [22 — 设计判断力不是玄学：Norman 框架评审自己的工具 + 素人培养判断力的五个动作](./docs/22-design-judgment-is-learnable.md)
+- [29 — 用代码 + AI 生成解说视频的完整管线：录屏为什么糊、Gemini 出图、Veo 动画、ffmpeg 对轴](./docs/29-code-ai-narrated-video-pipeline.md)
 
 ### Vibe Coding 错误
 
