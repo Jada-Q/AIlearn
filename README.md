@@ -126,6 +126,7 @@
 - [uu-64 — "我登录了" ≠ "AI 能操作它"：驱动 AI 前先分清两种"可用"（ELIZA effect / attribute substitution）](./uu/64-logged-in-is-not-operable.md)
 - [uu-65 — 学「关于学习的科学」时，正被那门科学要破的错觉骗：建材料库冒充学习（fluency illusion / distribution shift）](./uu/65-building-instead-of-learning.md)
 - [uu-66 — 学透一个「解药」后立刻婉拒安装它：理解 fix ≠ 装了 fix（knowing-doing gap / availability heuristic）](./uu/66-knowing-is-not-doing.md)
+- [uu-67 — 把「复刻画风」当一根可调旋钮：其实是滤镜 vs 重画两条路，一条有硬天花板（category error / negative transfer）](./uu/67-style-replication-is-a-category-error.md)
 
 ---
 
