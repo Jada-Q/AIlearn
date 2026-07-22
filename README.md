@@ -128,6 +128,7 @@
 - [uu-66 — 学透一个「解药」后立刻婉拒安装它：理解 fix ≠ 装了 fix（knowing-doing gap / availability heuristic）](./uu/66-knowing-is-not-doing.md)
 - [uu-67 — 把「复刻画风」当一根可调旋钮：其实是滤镜 vs 重画两条路，一条有硬天花板（category error / negative transfer）](./uu/67-style-replication-is-a-category-error.md)
 - [uu-68 — 我问"要不要补"时已经假设了该补：连提问都默认加法（additive bias / subtractive neglect）](./uu/68-subtractive-neglect.md)
+- [uu-69 — 盲点是缺失的回路，不是性格：性格归因让长期缺陷变得不可修（Attribution Theory）](./uu/69-blindspots-are-loops-not-traits.md)
 
 ---
 
