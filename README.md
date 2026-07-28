@@ -130,6 +130,7 @@
 - [uu-68 — 我问"要不要补"时已经假设了该补：连提问都默认加法（additive bias / subtractive neglect）](./uu/68-subtractive-neglect.md)
 - [uu-69 — 盲点是缺失的回路，不是性格：性格归因让长期缺陷变得不可修（Attribution Theory）](./uu/69-blindspots-are-loops-not-traits.md)
 - [uu-70 — 「看过了」不等于「看见了」：抽查式目检的覆盖率错觉（inattentional blindness）](./uu/70-looking-is-not-seeing.md)
+- [uu-71 — 真话估值器故障：手里全是真金，默认去铸假币（single source of truth）](./uu/71-broken-truth-valuator.md)
 
 ---
 
