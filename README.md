@@ -37,6 +37,7 @@
 - [22 — 设计判断力不是玄学：Norman 框架评审自己的工具 + 素人培养判断力的五个动作](./docs/22-design-judgment-is-learnable.md)
 - [29 — 用代码 + AI 生成解说视频的完整管线：录屏为什么糊、Gemini 出图、Veo 动画、ffmpeg 对轴](./docs/29-code-ai-narrated-video-pipeline.md)
 - [30 — AI 时代的个人差异化：生产被拉平之后，价值流向哪里](./docs/30-ai-era-personal-differentiation.md)
+- [31 — 四条护城河的系统性展开：AI 拉不平的到底是什么](./docs/31-four-moats-in-ai-era.md)
 
 ### Vibe Coding 错误
 
