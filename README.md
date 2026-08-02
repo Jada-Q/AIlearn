@@ -134,6 +134,7 @@
 - [uu-70 — 「看过了」不等于「看见了」：抽查式目检的覆盖率错觉（inattentional blindness）](./uu/70-looking-is-not-seeing.md)
 - [uu-71 — 真话估值器故障：手里全是真金，默认去铸假币（single source of truth）](./uu/71-broken-truth-valuator.md)
 - [uu-72 — 被信任的 AI，会自动跳过你的检查站：过程信任被错误迁移成单条免检（automation bias）](./uu/72-trusted-ai-skips-the-checkpoint.md)
+- [uu-73 — 连上了 ≠ 通了：心智模型缺"路由"层，与系统驻留物盲区（conceptual model）](./uu/73-connected-is-not-routed.md)
 
 ---
 
