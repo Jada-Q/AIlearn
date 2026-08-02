@@ -135,6 +135,7 @@
 - [uu-71 — 真话估值器故障：手里全是真金，默认去铸假币（single source of truth）](./uu/71-broken-truth-valuator.md)
 - [uu-72 — 被信任的 AI，会自动跳过你的检查站：过程信任被错误迁移成单条免检（automation bias）](./uu/72-trusted-ai-skips-the-checkpoint.md)
 - [uu-73 — 连上了 ≠ 通了：心智模型缺"路由"层，与系统驻留物盲区（conceptual model）](./uu/73-connected-is-not-routed.md)
+- [uu-74 — 有产出的逃避：兔子洞穿上了交付物的外衣（structured procrastination）](./uu/74-productive-procrastination-wears-deliverables.md)
 
 ---
 
