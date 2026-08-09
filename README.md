@@ -140,6 +140,7 @@
 - [uu-76 — 手段迭代会悄悄推翻你选这条路的理由——而没有任何警报会响（goal displacement）](./uu/76-means-quietly-invalidate-ends.md)
 - [uu-77 — 路灯之外的投递：记录暗区与面后才懂对方（streetlight effect）](./uu/77-applications-outside-the-streetlight.md)
 - [uu-78 — 用"求知"替代"行动"，并把盲区裁判权交回权威（intellectualization）](./uu/78-learning-as-avoidance.md)
+- [uu-79 — 仪器先死，系统还在跑：产出端健康会伪装成整体健康（transfer failure）](./uu/79-the-instrument-died-first.md)
 
 ---
 
