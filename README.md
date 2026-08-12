@@ -54,6 +54,10 @@
 - [21 — 定时任务里的 AI 助手为什么半夜罢工：换个执行环境，你的脚本就是另一个脚本（launchd 缺 USER / 报错走 stdout / set -e 杀死重试）](./docs/21-launchd-env-silent-cli-failures.md)
 - [24 — 「修好了」的幻觉：一个空环境变量骗过两次修复——修复宣告必须含根因一句话](./docs/24-empty-env-var-fixed-twice.md)
 
+### 技术选型
+
+- [32 — 协议决定你哪些东西能一天换掉，哪些一换就重做（HTTP Range / 适配器 / 选型三问）](./docs/32-protocol-compatibility.md)
+
 ### 数据安全
 
 - [14 — 搬到硬盘 ≠ 备份：一人公司的数据安全系统（3-2-1 / 上云前自加密 / 跨盘搬运避坑）](./docs/14-move-is-not-backup.md)
