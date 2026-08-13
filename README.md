@@ -146,6 +146,7 @@
 - [uu-78 — 用"求知"替代"行动"，并把盲区裁判权交回权威（intellectualization）](./uu/78-learning-as-avoidance.md)
 - [uu-79 — 仪器先死，系统还在跑：产出端健康会伪装成整体健康（transfer failure）](./uu/79-the-instrument-died-first.md)
 - [uu-80 — 护栏只会长在"会当场报错"的地方，不会长在重要的地方：恶劣学习环境让不疼的错误永远长不出防线](./uu/80-guardrails-grow-where-it-hurts.md)
+- [uu-81 — 向内问还是查账本："我有什么"的答案通道错配 + 提问当止痛片](./uu/81-introspection-vs-ledger.md)
 
 ---
 
