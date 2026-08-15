@@ -40,6 +40,7 @@
 - [33 — 拆开 agent 的身体：读 DeepSeek Harness 源码搞懂我天天在用的东西](./docs/33-agent-harness-anatomy.md)
 - [34 — Harness 定下限，模型定上限：续拆 DeepSeek Harness 的压缩、缓存与工具流水线](./docs/34-harness-floor-model-ceiling.md)
 - [31 — 四条护城河的系统性展开：AI 拉不平的到底是什么](./docs/31-four-moats-in-ai-era.md)
+- [35 — 从 Jeff Dean 告别访谈提炼的建议权重表：给 vibe coder 的五条 + 按自己坐标重排的五条](./docs/35-jeff-dean-advice-for-vibe-coders.md)
 
 ### Vibe Coding 错误
 
