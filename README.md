@@ -43,6 +43,7 @@
 - [35 — 从 Jeff Dean 告别访谈提炼的建议权重表：给 vibe coder 的五条 + 按自己坐标重排的五条](./docs/35-jeff-dean-advice-for-vibe-coders.md)
 - [36 — 两张地图指向同一处：Jeff Dean × Andrew Ng，价值向"定义"和"判定"两端迁移](./docs/36-dean-ng-value-migrates-to-both-ends.md)
 - [38 — 存因还是存果：AI 图像编辑的三条边界与三种工作模式（含"AI 写确定性程序"这个被漏掉的选项）](./docs/38-cause-vs-effect-image-editing.md)
+- [39 — 桅杆倒了，影子还立着：一次修图，和"看起来完全正确"为什么危险（38 的叙事版）](./docs/39-mast-fell-shadow-still-standing.md)
 - [37 — 核壳模型的举一反三：五个扩展，和一条不许省的边界](./docs/37-core-shell-model-extensions.md)
 
 ### Vibe Coding 错误
