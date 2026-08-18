@@ -153,6 +153,8 @@
 - [uu-80 — 护栏只会长在"会当场报错"的地方，不会长在重要的地方：恶劣学习环境让不疼的错误永远长不出防线](./uu/80-guardrails-grow-where-it-hurts.md)
 - [uu-81 — 向内问还是查账本："我有什么"的答案通道错配 + 提问当止痛片](./uu/81-introspection-vs-ledger.md)
 - [uu-82 — 加法是默认值：改进系统时减法方案从不进候选集 + 并行买的是产能不是筛选](./uu/82-additive-bias-batch-filter.md)
+- [uu-83 — 工具地图缺的那一格："测量+计算"不在候选集里 + 把教训写成文章≠执行它](./uu/83-the-third-cell-and-the-unverified-claim.md)
+- [uu-84 — 名词的陌生度被当成能力的缺口：不认识"H5"差点自降一半报价](./uu/84-unfamiliar-label-capability-gap.md)
 
 ---
 
