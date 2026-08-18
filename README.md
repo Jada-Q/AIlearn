@@ -157,6 +157,7 @@
 - [uu-82 — 加法是默认值：改进系统时减法方案从不进候选集 + 并行买的是产能不是筛选](./uu/82-additive-bias-batch-filter.md)
 - [uu-83 — 工具地图缺的那一格："测量+计算"不在候选集里 + 把教训写成文章≠执行它](./uu/83-the-third-cell-and-the-unverified-claim.md)
 - [uu-84 — 名词的陌生度被当成能力的缺口：不认识"H5"差点自降一半报价](./uu/84-unfamiliar-label-capability-gap.md)
+- [uu-85 — 门装在了我警惕的那一侧：护栏只长在你已经不信任的东西上](./uu/85-guardrail-on-the-wrong-side.md)
 
 ---
 
