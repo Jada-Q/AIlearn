@@ -160,6 +160,7 @@
 - [uu-84 — 名词的陌生度被当成能力的缺口：不认识"H5"差点自降一半报价](./uu/84-unfamiliar-label-capability-gap.md)
 - [uu-85 — 门装在了我警惕的那一侧：护栏只长在你已经不信任的东西上](./uu/85-guardrail-on-the-wrong-side.md)
 - [uu-86 — 仪式跟着情绪走,不跟可逆性走：一天易经课暴露的三个判断盲点](./uu/86-ceremony-follows-emotion.md)
+- [uu-87 — 验证条件 ≠ 使用条件：一张五天没被扫过的二维码](./uu/87-verify-under-use-conditions.md)
 
 ---
 
