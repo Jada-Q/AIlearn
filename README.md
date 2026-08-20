@@ -161,6 +161,7 @@
 - [uu-85 — 门装在了我警惕的那一侧：护栏只长在你已经不信任的东西上](./uu/85-guardrail-on-the-wrong-side.md)
 - [uu-86 — 仪式跟着情绪走,不跟可逆性走：一天易经课暴露的三个判断盲点](./uu/86-ceremony-follows-emotion.md)
 - [uu-87 — 验证条件 ≠ 使用条件：一张五天没被扫过的二维码](./uu/87-verify-under-use-conditions.md)
+- [uu-88 — 台账在你最需要它的时候自动下线：一场关于人际比较的会话](./uu/88-ledger-goes-offline-when-you-need-it.md)
 
 ---
 
