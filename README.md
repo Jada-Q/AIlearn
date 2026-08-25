@@ -165,6 +165,7 @@
 - [uu-88 — 台账在你最需要它的时候自动下线：一场关于人际比较的会话](./uu/88-ledger-goes-offline-when-you-need-it.md)
 - [uu-89 — 你选的叙事，决定了你看不见什么](./uu/89-the-frame-you-pick-drops-the-checklist.md)
 - [uu-90 — 你做对了一次，但没把它认成路径](./uu/90-you-made-the-recipe-and-called-it-filing.md)
+- [uu-91 — 你的自我形象有缓存问题](./uu/91-your-self-image-has-a-cache-problem.md)
 
 ---
 
