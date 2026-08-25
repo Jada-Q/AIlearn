@@ -33,6 +33,7 @@
 - [06 — 守住判断层：AI 时代如何构建有效验证机制](./docs/06-judgment-layer-verification.md)
 - [08 — 撞到物理天花板，就换框架别再调参数：一次实时翻译工具复盘](./docs/08-reframe-at-physical-ceiling.md)
 - [18 — 把设计品味变成可测的科学：一场 20 轮 60 评审的盲测实验](./docs/18-design-theory-blind-test.md)
+- [41 — 从 90 篇盲点判例里长出来的一张概念地图（45 个概念 · 九个机制族）](./docs/41-cognitive-concept-map-from-blindspots.md)
 - [19 — 视觉效果选型、质量基准线与判断力培养：一次黑客松连续三次翻车的三层复盘](./docs/19-visual-effects-model-selection-and-judgment-cultivation.md)
 - [20 — 省 token 从量自己的账本开始：热文教你装新工具，我搬走了 58KB 旧配置](./docs/20-token-arbitrage-audit-your-own-ledger.md)
 - [22 — 设计判断力不是玄学：Norman 框架评审自己的工具 + 素人培养判断力的五个动作](./docs/22-design-judgment-is-learnable.md)
