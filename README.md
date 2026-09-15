@@ -168,6 +168,7 @@
 - [uu-90 — 你做对了一次，但没把它认成路径](./uu/90-you-made-the-recipe-and-called-it-filing.md)
 - [uu-91 — 你的自我形象有缓存问题](./uu/91-your-self-image-has-a-cache-problem.md)
 - [uu-92 — 你升级了正在被验证的东西](./uu/92-you-upgraded-the-thing-under-test.md)
+- [uu-93 — 你能审计它的结论，审计不了它的前提](./uu/93-the-constraint-you-cannot-audit.md)
 
 ---
 
