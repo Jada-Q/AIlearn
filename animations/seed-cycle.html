@@ -41,47 +41,21 @@
   .layer { position: absolute; pointer-events: none; }
   .fade { opacity: 0; }
 
-  /* 开场 */
-  #intro { inset: 0; display: grid; place-content: center; text-align: center; gap: .6rem; padding-inline: 16px; }
-  #intro h1 { font-family: var(--brush); font-weight: 400; font-size: clamp(3.6rem, 13vw, 7.5rem); line-height: 1; margin: 0; letter-spacing: .08em; }
   .kicker { font-size: .78rem; letter-spacing: .32em; color: var(--fg-2); margin: 0; }
-  .lede { margin: .4rem 0 0; font-size: clamp(.95rem, 2.6vw, 1.15rem); color: var(--fg-2); letter-spacing: .06em; }
-
-  /* 章节卡：左上 */
-  #card { top: calc(env(safe-area-inset-top, 0px) + clamp(16px, 4vw, 40px)); left: clamp(16px, 4vw, 44px); max-width: 60vw; }
-  #card .kicker { display: flex; gap: .9em; flex-wrap: wrap; font-variant-numeric: tabular-nums; }
-  #cChar { font-family: var(--brush); font-size: clamp(4.2rem, 12vw, 7.2rem); line-height: 1.05; margin-top: .2rem; }
-  #cQuote { margin: .1rem 0 0; font-size: clamp(.95rem, 2.4vw, 1.1rem); letter-spacing: .1em; }
-
-  /* 卦画：右上 */
-  #hex { top: calc(env(safe-area-inset-top, 0px) + clamp(22px, 4.5vw, 48px)); right: clamp(16px, 4vw, 44px);
-         width: clamp(56px, 9vw, 92px); display: flex; flex-direction: column-reverse; gap: clamp(5px, .9vw, 9px); }
-  #hex i { display: flex; justify-content: space-between; height: clamp(6px, 1vw, 10px); --g: 0%; }
-  #hex b { width: calc(50% - var(--g) / 2); background: var(--fg); }
-  #hexName { top: calc(env(safe-area-inset-top, 0px) + clamp(22px, 4.5vw, 48px) + clamp(70px, 11vw, 124px)); right: clamp(16px, 4vw, 44px);
-             width: clamp(56px, 9vw, 92px); text-align: center; font-size: .8rem; letter-spacing: .3em; color: var(--fg-2); }
-
-  /* 字幕 */
-  #sub { left: 50%; transform: translateX(-50%); bottom: calc(env(safe-area-inset-bottom, 0px) + 78px);
-         width: min(34em, calc(100% - 32px)); margin: 0; text-align: center; font-size: clamp(.95rem, 2.5vw, 1.12rem); line-height: 1.9; letter-spacing: .04em; text-wrap: balance; }
 
   /* 终章 */
-  #finale { inset: 0; display: grid; place-items: center; padding-inline: 16px; padding-bottom: 60px; color: var(--moon); }
-  #finale > .stage { grid-area: 1 / 1; display: flex; flex-direction: column; align-items: center; gap: 1.6rem; text-align: center; max-width: 36em; }
-  #bigHex { position: relative; width: clamp(120px, 26vw, 190px); height: clamp(108px, 22vw, 160px); }
-  #bigHex i { position: absolute; left: 0; right: 0; height: 12%; display: flex; justify-content: space-between; --g: 0%; --c: #6d6c67; }
-  #bigHex b { width: calc(50% - var(--g) / 2); background: var(--c); }
-  .caps { display: grid; min-height: 4.2em; }
-  .caps > p { grid-area: 1 / 1; margin: 0; font-size: clamp(1rem, 2.8vw, 1.25rem); line-height: 1.9; letter-spacing: .06em; }
+  #finale { inset: 0; display: grid; place-items: end center; padding-inline: 16px; padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 76px); color: var(--moon); }
+  #finale > .stage { grid-area: 1 / 1; display: flex; flex-direction: column; align-items: center; gap: 1.1rem; text-align: center; max-width: 36em; }
+  .cap { margin: 0; font-size: clamp(1.05rem, 2.9vw, 1.35rem); line-height: 1.9; letter-spacing: .08em; }
   .verses { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1rem; }
   .verses li { display: flex; flex-direction: column; gap: .15rem; }
   .verses .v { font-size: clamp(1.05rem, 3vw, 1.35rem); letter-spacing: .06em; }
   .verses .src { font-size: .78rem; letter-spacing: .28em; color: #8d8c86; }
-  .chain { font-family: var(--brush); font-size: clamp(1.8rem, 6.5vw, 3rem); letter-spacing: .12em; margin: 0; line-height: 1.3; }
+  .chain { font-family: var(--brush); font-size: clamp(1.6rem, 5.5vw, 2.6rem); letter-spacing: .12em; margin: 0; line-height: 1.3; }
   .chain span { color: #6d6c67; }
   .chain .on { color: var(--moon); }
   .chain-note { margin: 0; color: #a9a8a2; letter-spacing: .08em; font-size: clamp(.9rem, 2.4vw, 1.05rem); line-height: 1.9; }
-  .final { font-family: var(--brush); font-size: clamp(2.2rem, 8vw, 4.2rem); margin: .6rem 0 0; line-height: 1.2; text-wrap: balance; }
+  .final { font-family: var(--brush); font-size: clamp(2rem, 6.5vw, 3.4rem); margin: .6rem 0 0; line-height: 1.2; text-wrap: balance; }
   .final-src { margin: 0; font-size: .8rem; letter-spacing: .3em; color: #8d8c86; }
   #replay { pointer-events: auto; margin-top: .6rem; font: inherit; font-size: .95rem; letter-spacing: .3em; padding: .6em 1.6em;
             color: var(--moon); background: transparent; border: 1px solid #6d6c67; cursor: pointer; }
@@ -90,7 +64,7 @@
   /* 控制条 */
   #bar { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 14px;
          padding: 10px clamp(16px, 4vw, 44px) calc(env(safe-area-inset-bottom, 0px) + 14px); color: var(--fg); }
-  #play { font: inherit; font-size: .85rem; letter-spacing: .2em; min-width: 4.2em; padding: .35em .6em; background: transparent;
+  #play, #sound { font: inherit; font-size: .85rem; letter-spacing: .2em; min-width: 4.2em; padding: .35em .6em; background: transparent;
           color: var(--fg); border: 1px solid var(--fg-3); cursor: pointer; }
   #track { position: relative; flex: 1; height: 34px; cursor: pointer; touch-action: none; }
   #track::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--fg-3); }
@@ -104,7 +78,6 @@
   @media (max-width: 560px) {
     .tick { font-size: .85rem; }
     #clock { display: none; }
-    #sub { bottom: calc(env(safe-area-inset-bottom, 0px) + 70px); }
   }
 </style>
 
@@ -113,55 +86,29 @@
   <div id="night"></div>
   <div class="grain"></div>
 
-  <section id="intro" class="layer fade" data-in="0.3" data-out="5.6">
-    <p class="kicker">序卦连读 · 第 22—27 卦</p>
-    <h1>一颗种子</h1>
-    <p class="lede">复 · 无妄 · 大畜 · 颐 · 贲 · 剥 —— 首尾相接，是一个环</p>
-  </section>
-
-  <header id="card" class="layer fade">
-    <p class="kicker"><span id="cNum"></span><span id="cName"></span><span id="cSeason"></span></p>
-    <div id="cChar"></div>
-    <p id="cQuote"></p>
-  </header>
-
-  <div id="hex" class="layer fade" aria-hidden="true">
-    <i><b></b><b></b></i><i><b></b><b></b></i><i><b></b><b></b></i>
-    <i><b></b><b></b></i><i><b></b><b></b></i><i><b></b><b></b></i>
-  </div>
-  <div id="hexName" class="layer fade"></div>
-
-  <p id="sub" class="layer fade"></p>
-
   <section id="finale" class="layer">
     <div class="stage">
-      <div id="bigHex" class="fade" data-in="96.8" data-out="113.8" aria-label="卦画：剥变为复">
-        <i><b></b><b></b></i><i><b></b><b></b></i><i><b></b><b></b></i>
-        <i><b></b><b></b></i><i><b></b><b></b></i><i><b></b><b></b></i>
-      </div>
-      <div class="caps">
-        <p class="fade" data-in="97.6" data-out="100.6">剥：五阴在下，一阳在上。<br>硕果不食，最后一点真，剥不掉。</p>
-        <p class="fade" data-in="101" data-out="113.8">「物不可以终尽，剥穷上反下，<br>故受之以复。」</p>
-      </div>
+      <p class="cap fade" data-in="108" data-out="124.4">「物不可以终尽，剥穷上反下，<br>故受之以复。」</p>
       <ul class="verses">
-        <li class="fade" data-in="105" data-out="113.8"><span class="v">开到最盛，就是开始落。</span><span class="src">贲 · 致饰然后亨则尽矣</span></li>
-        <li class="fade" data-in="107.8" data-out="113.8"><span class="v">剥掉的是外层，留下的是那一点真。</span><span class="src">剥 · 硕果不食</span></li>
-        <li class="fade" data-in="110.6" data-out="113.8"><span class="v">从最高处出去，从最低处回来。</span><span class="src">复 · 穷上反下</span></li>
+        <li class="fade" data-in="113.4" data-out="124.4"><span class="v">开到最盛，就是开始落。</span><span class="src">贲 · 致饰然后亨则尽矣</span></li>
+        <li class="fade" data-in="116.6" data-out="124.4"><span class="v">剥掉的是外层，留下的是那一点真。</span><span class="src">剥 · 硕果不食</span></li>
+        <li class="fade" data-in="120.8" data-out="124.4"><span class="v">从最高处出去，从最低处回来。</span><span class="src">复 · 穷上反下</span></li>
       </ul>
     </div>
     <div class="stage">
-      <p class="chain fade" data-in="114.6" id="chain"><span>种</span> <span>真</span> <span>蓄</span> <span>养</span> <span>饰</span> <span>落</span> <span>种</span></p>
-      <p class="chain-note fade" data-in="116.4">凋零的地方，就是下一次入土的地方。<br>那一根阳爻，一直都在。</p>
-      <p class="final fade" data-in="119.5">复，其见天地之心乎</p>
-      <p class="final-src fade" data-in="120.8">《彖传》</p>
-      <button id="replay" class="fade" data-in="123" type="button">再看一遍</button>
+      <p class="chain fade" data-in="124.8" id="chain"><span>种</span> <span>真</span> <span>蓄</span> <span>养</span> <span>饰</span> <span>落</span> <span>种</span></p>
+      <p class="chain-note fade" data-in="125.4">凋零的地方，就是下一次入土的地方。<br>那一根阳爻，一直都在。</p>
+      <p class="final fade" data-in="132.2">复，其见天地之心乎</p>
+      <p class="final-src fade" data-in="133.4">《彖传》</p>
+      <button id="replay" class="fade" data-in="135.5" type="button">再看一遍</button>
     </div>
   </section>
 
   <nav id="bar" aria-label="播放控制">
     <button id="play" type="button">暂停</button>
-    <div id="track" tabindex="0" role="slider" aria-label="时间轴" aria-valuemin="0" aria-valuemax="128" aria-valuenow="0"><div id="fill"></div></div>
-    <span id="clock">0:00 / 2:08</span>
+    <button id="sound" type="button" aria-pressed="false">开声音</button>
+    <div id="track" tabindex="0" role="slider" aria-label="时间轴" aria-valuemin="0" aria-valuemax="140" aria-valuenow="0"><div id="fill"></div></div>
+    <span id="clock">0:00 / 2:20</span>
   </nav>
 </div>
 
@@ -173,7 +120,7 @@ import * as THREE from 'three';
 
 THREE.ColorManagement.enabled = false;
 const V = THREE.Vector3;
-const END = 128;
+const END = 140;
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ---------- 分镜 ----------
@@ -802,42 +749,69 @@ function updateScene(t) {
   cameraAt(t);
 }
 
-// ---------- HUD ----------
+// ---------- 终章：点 → 线 → 面 → 视角 ----------
+const FIN_T = 96.8;
+const fin = new THREE.Scene();
+fin.background = new THREE.Color(0.043, 0.043, 0.043);
+fin.add(new THREE.AmbientLight(0xffffff, 1.6));
+const sun = new THREE.DirectionalLight(0xffffff, 2.4); sun.position.set(2, 3, 5); fin.add(sun);
+const hexG = new THREE.Group(); fin.add(hexG);
+const LW = 3.0, LH = 0.3, LD = 0.3, GAP = 0.44, SP = 0.58, TOP = 2.5 * SP;
+const dot = new THREE.Mesh(new THREE.SphereGeometry(0.09, 24, 16), new THREE.MeshBasicMaterial({ color: new THREE.Color(0.94, 0.93, 0.91) }));
+fin.add(dot);
+const yang = new THREE.Mesh(new THREE.BoxGeometry(LW, LH, LD), new THREE.MeshLambertMaterial({ color: new THREE.Color(0.94, 0.93, 0.91) }));
+yang.position.y = TOP; hexG.add(yang);
+const yins = [];
+for (let i = 0; i < 5; i++) {
+  const m = new THREE.MeshLambertMaterial({ color: new THREE.Color(0.42, 0.41, 0.39), transparent: true, opacity: 0 });
+  const row = new THREE.Group(); row.position.y = (i - 2.5) * SP;
+  const hw = (LW - GAP) / 2, g = new THREE.BoxGeometry(hw, LH, LD);
+  const l = new THREE.Mesh(g, m), r = new THREE.Mesh(g, m);
+  l.position.x = -(GAP + hw) / 2; r.position.x = (GAP + hw) / 2;
+  row.add(l, r); hexG.add(row); yins.push({ row, m, t0: 100.9 + (4 - i) * 0.36 });
+}
+function updateFinale(t) {
+  // 点
+  const kDot = sstep(97.1, 97.9, t), kLine = sstep(98.9, 100.4, t);
+  dot.visible = kLine < 0.99;
+  dot.scale.setScalar(Math.max(0.001, kDot * (1 + 0.25 * Math.sin(Math.max(0, t - 97.9) * 4) * (1 - kLine)) * (1 - kLine)));
+  // 线
+  yang.visible = kLine > 0;
+  yang.scale.set(Math.max(0.001, lerp(0.06, 1, kLine)), lerp(0.6, 1, kLine), lerp(0.6, 1, kLine));
+  // 面
+  for (const y of yins) {
+    const k = sstep(y.t0, y.t0 + 0.8, t);
+    y.m.opacity = k; y.row.visible = k > 0.01; y.row.scale.x = lerp(0.7, 1, k);
+  }
+  const kFace = sstep(100.8, 103.0, t);
+  // 视角：剥翻转 180° 就是复
+  const kFlip = sstep(103.5, 105.9, t);
+  hexG.rotation.x = Math.PI * kFlip;
+  const kUp = sstep(107, 108.6, t);
+  const kUp2 = sstep(124.2, 125.4, t);
+  hexG.position.y = lerp(-TOP, 0, kFace) + 1.55 * kUp + 0.75 * kUp2;
+  hexG.scale.setScalar(lerp(1, 0.56, kUp) * lerp(1, 0.82, kUp2));
+  const kOrb = sstep(103.0, 104.4, t) * (1 - sstep(105.6, 107.2, t));
+  camera.position.set(3.8 * kOrb + (reduceMotion ? 0 : Math.sin(t * 0.2) * 0.12), 2.4 * kOrb, 9 - 1.5 * kOrb);
+  camera.lookAt(0, 0.3 * kUp, 0);
+}
+
+// ---------- 文字（只在终章出现） ----------
 const $ = id => document.getElementById(id);
-const card = $('card'), hex = $('hex'), hexName = $('hexName'), sub = $('sub');
-const hexLines = [...hex.children];
-const bigLines = [...$('bigHex').children];
 const timed = [...document.querySelectorAll('[data-in]')];
 const chainSpans = [...$('chain').children];
 let shown = -1;
 
 function chapterIdx(t) { let i = 0; while (i < CH.length - 1 && t >= CH[i + 1].t0) i++; return i; }
-function prevLines(i) { for (let j = i - 1; j >= 0; j--) if (CH[j].lines) return CH[j].lines; return CH[i].lines; }
 
 function updateHUD(t) {
-  const ci = chapterIdx(t), c = CH[ci];
+  const ci = chapterIdx(t);
   if (ci !== shown) {
     shown = ci;
-    if (c.num) {
-      $('cNum').textContent = c.num; $('cName').textContent = c.name; $('cSeason').textContent = c.season;
-      $('cChar').textContent = c.ch; $('cQuote').textContent = '「' + c.quote + '」';
-      hexName.textContent = c.name; sub.textContent = c.text;
-    }
-    document.querySelectorAll('.tick').forEach((el, k) => el.classList.toggle('on', +el.dataset.i <= ci));
+    document.querySelectorAll('.tick').forEach(el => el.classList.toggle('on', +el.dataset.i <= ci));
   }
-  const inC = c.num ? sstep(c.t0 + 0.2, c.t0 + 1.4, t) * (1 - sstep(c.t1 - 0.9, c.t1 - 0.1, t)) : 0;
-  card.style.opacity = inC;
-  sub.style.opacity = c.num ? sstep(c.t0 + 1.2, c.t0 + 2.4, t) * (1 - sstep(c.t1 - 1.1, c.t1 - 0.3, t)) : 0;
-  const hexOp = sstep(6.2, 7.4, t) * (1 - sstep(94, 95, t));
-  hex.style.opacity = hexOp; hexName.style.opacity = hexOp * inC;
-  if (c.lines) {
-    const from = prevLines(ci), k = sstep(c.t0, c.t0 + 1.6, t);
-    hexLines.forEach((el, i) => el.style.setProperty('--g', (lerp(1 - from[i], 1 - c.lines[i], k) * 18).toFixed(2) + '%'));
-  }
-
-  // 终章
-  const night = sstep(94.5, 97, t);
-  $('night').style.opacity = night;
+  const night = sstep(94.5, 96.5, t);
+  $('night').style.opacity = night * (1 - sstep(FIN_T, FIN_T + 0.6, t));
   document.body.classList.toggle('is-night', night > 0.5);
   for (const el of timed) {
     const a = +el.dataset.in, b = el.dataset.out ? +el.dataset.out : 1e9;
@@ -845,26 +819,20 @@ function updateHUD(t) {
     el.style.opacity = o;
     el.style.visibility = o < 0.01 ? 'hidden' : 'visible';
   }
-  // 剥 → 复：顶上那根阳爻出去，从底下回来
-  const k1 = sstep(100.2, 101.8, t), k2 = sstep(101.4, 103, t), k3 = sstep(102.6, 104.4, t);
-  const BO = [0, 0, 0, 0, 0, 1];
-  bigLines.forEach((el, j) => {
-    let slot, op = 1;
-    if (j === 5) {
-      if (t < 102.6) { slot = 5 + 1.4 * k1; op = 1 - k1; } else { slot = -1.4 + 1.4 * k3; op = k3; }
-      el.style.setProperty('--c', '#efeee9');
-    } else slot = j + k2;
-    el.style.setProperty('--g', BO[j] ? '0%' : '18%');
-    el.style.top = ((5 - slot) / 5 * 88) + '%';
-    el.style.opacity = op;
-  });
-  const lit = t < 114.6 ? -1 : Math.floor((t - 114.6) / 0.55);
+  const lit = t < 124.8 ? -1 : Math.floor((t - 124.8) / 0.55);
   chainSpans.forEach((s, i) => s.classList.toggle('on', i <= lit));
 
   $('fill').style.width = (t / END * 100) + '%';
   $('track').setAttribute('aria-valuenow', t.toFixed(0));
   const fmt = s => Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0');
   $('clock').textContent = fmt(t) + ' / ' + fmt(END);
+}
+
+function renderAt(t) {
+  updateScene(t);
+  if (t >= FIN_T) updateFinale(t);
+  updateHUD(t);
+  renderer.render(t >= FIN_T ? fin : scene, camera);
 }
 
 // 时间轴刻度
@@ -878,6 +846,27 @@ for (const [i, label] of TICKS) {
 let t = 0, playing = true, last = performance.now();
 const playBtn = $('play');
 function setPlaying(p) { playing = p; playBtn.textContent = p ? '暂停' : '播放'; }
+
+// 声音：BGM + 旁白。开声音后以音频时钟为准，画面跟着它走
+const audio = new Audio('seed-cycle-audio.webm');
+audio.preload = 'auto';
+let soundOn = false, starting = false;
+const soundBtn = $('sound');
+soundBtn.onclick = () => {
+  soundOn = !soundOn;
+  soundBtn.textContent = soundOn ? '关声音' : '开声音';
+  soundBtn.setAttribute('aria-pressed', String(soundOn));
+  if (soundOn) audio.currentTime = t;
+};
+function syncAudio() {
+  if (!soundOn || !playing) { if (!audio.paused) audio.pause(); return; }
+  if (audio.paused) {
+    if (!starting) { starting = true; audio.currentTime = t; audio.play().catch(() => {}).finally(() => { starting = false; }); }
+    return;
+  }
+  if (Math.abs(audio.currentTime - t) > 0.3) audio.currentTime = t;
+  else t = audio.currentTime;
+}
 playBtn.onclick = () => { if (!playing && t >= END) t = 0; setPlaying(!playing); };
 $('replay').onclick = () => { t = 0; setPlaying(true); };
 const track = $('track');
@@ -906,8 +895,8 @@ addEventListener('resize', resize); resize();
 function frame(now) {
   const dt = Math.min(0.1, (now - last) / 1000); last = now;
   if (playing && !dragging) { t += dt; if (t >= END) { t = END; setPlaying(false); } }
-  updateScene(t); updateHUD(t);
-  renderer.render(scene, camera);
+  syncAudio();
+  renderAt(t);
   requestAnimationFrame(frame);
 }
 requestAnimationFrame(frame);
@@ -915,6 +904,7 @@ requestAnimationFrame(frame);
 // 供录制 / 调试：跳到指定秒并立即渲染一帧
 window.seedCycle = {
   END,
-  seek(x) { t = clamp(x, 0, END); setPlaying(false); updateScene(t); updateHUD(t); renderer.render(scene, camera); },
+  landT: 85.5 + Math.sqrt(2 * (FRUIT.y - FR) / 9.8),
+  seek(x) { t = clamp(x, 0, END); setPlaying(false); renderAt(t); },
 };
 </script>
