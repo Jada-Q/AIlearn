@@ -1,0 +1,914 @@
+<meta charset="utf-8">
+<title>一颗种子 · 复到剥</title>
+<meta name="description" content="黑白水墨 three.js 动画：一颗种子从入土到凋零，对应复、无妄、大畜、颐、贲、剥六卦，最后剥极而复。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600&display=swap">
+<style>
+  :root {
+    color-scheme: light;
+    --paper: #e9e8e3;
+    --ink: #141414;
+    --ink-2: #4d4c48;
+    --ink-3: #8a8983;
+    --night: #0b0b0b;
+    --moon: #efeee9;
+    --fg: var(--ink);
+    --fg-2: var(--ink-2);
+    --fg-3: var(--ink-3);
+    --bg: var(--paper);
+    --brush: "Ma Shan Zheng", "STKaiti", "KaiTi", "Kaiti SC", serif;
+    --serif: "Noto Serif SC", "Songti SC", "SimSun", "Source Han Serif SC", serif;
+  }
+  body.is-night { --fg: var(--moon); --fg-2: #b5b4ae; --fg-3: #75746f; --bg: var(--night); }
+  html, body { height: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font-family: var(--serif); overflow: hidden;
+    transition: background-color .8s;
+  }
+  #app { position: fixed; inset: 0; }
+  #c { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  #night { position: absolute; inset: 0; background: var(--night); opacity: 0; pointer-events: none; }
+  .grain {
+    position: absolute; inset: 0; pointer-events: none; mix-blend-mode: multiply; opacity: .5;
+    background:
+      radial-gradient(ellipse at center, transparent 55%, rgba(20,20,20,.16) 100%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .22 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  body.is-night .grain { mix-blend-mode: screen; opacity: .25; }
+
+  .layer { position: absolute; pointer-events: none; }
+  .fade { opacity: 0; }
+
+  /* 开场 */
+  #intro { inset: 0; display: grid; place-content: center; text-align: center; gap: .6rem; padding-inline: 16px; }
+  #intro h1 { font-family: var(--brush); font-weight: 400; font-size: clamp(3.6rem, 13vw, 7.5rem); line-height: 1; margin: 0; letter-spacing: .08em; }
+  .kicker { font-size: .78rem; letter-spacing: .32em; color: var(--fg-2); margin: 0; }
+  .lede { margin: .4rem 0 0; font-size: clamp(.95rem, 2.6vw, 1.15rem); color: var(--fg-2); letter-spacing: .06em; }
+
+  /* 章节卡：左上 */
+  #card { top: calc(env(safe-area-inset-top, 0px) + clamp(16px, 4vw, 40px)); left: clamp(16px, 4vw, 44px); max-width: 60vw; }
+  #card .kicker { display: flex; gap: .9em; flex-wrap: wrap; font-variant-numeric: tabular-nums; }
+  #cChar { font-family: var(--brush); font-size: clamp(4.2rem, 12vw, 7.2rem); line-height: 1.05; margin-top: .2rem; }
+  #cQuote { margin: .1rem 0 0; font-size: clamp(.95rem, 2.4vw, 1.1rem); letter-spacing: .1em; }
+
+  /* 卦画：右上 */
+  #hex { top: calc(env(safe-area-inset-top, 0px) + clamp(22px, 4.5vw, 48px)); right: clamp(16px, 4vw, 44px);
+         width: clamp(56px, 9vw, 92px); display: flex; flex-direction: column-reverse; gap: clamp(5px, .9vw, 9px); }
+  #hex i { display: flex; justify-content: space-between; height: clamp(6px, 1vw, 10px); --g: 0%; }
+  #hex b { width: calc(50% - var(--g) / 2); background: var(--fg); }
+  #hexName { top: calc(env(safe-area-inset-top, 0px) + clamp(22px, 4.5vw, 48px) + clamp(70px, 11vw, 124px)); right: clamp(16px, 4vw, 44px);
+             width: clamp(56px, 9vw, 92px); text-align: center; font-size: .8rem; letter-spacing: .3em; color: var(--fg-2); }
+
+  /* 字幕 */
+  #sub { left: 50%; transform: translateX(-50%); bottom: calc(env(safe-area-inset-bottom, 0px) + 78px);
+         width: min(34em, calc(100% - 32px)); margin: 0; text-align: center; font-size: clamp(.95rem, 2.5vw, 1.12rem); line-height: 1.9; letter-spacing: .04em; text-wrap: balance; }
+
+  /* 终章 */
+  #finale { inset: 0; display: grid; place-items: center; padding-inline: 16px; padding-bottom: 60px; color: var(--moon); }
+  #finale > .stage { grid-area: 1 / 1; display: flex; flex-direction: column; align-items: center; gap: 1.6rem; text-align: center; max-width: 36em; }
+  #bigHex { position: relative; width: clamp(120px, 26vw, 190px); height: clamp(108px, 22vw, 160px); }
+  #bigHex i { position: absolute; left: 0; right: 0; height: 12%; display: flex; justify-content: space-between; --g: 0%; --c: #6d6c67; }
+  #bigHex b { width: calc(50% - var(--g) / 2); background: var(--c); }
+  .caps { display: grid; min-height: 4.2em; }
+  .caps > p { grid-area: 1 / 1; margin: 0; font-size: clamp(1rem, 2.8vw, 1.25rem); line-height: 1.9; letter-spacing: .06em; }
+  .verses { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1rem; }
+  .verses li { display: flex; flex-direction: column; gap: .15rem; }
+  .verses .v { font-size: clamp(1.05rem, 3vw, 1.35rem); letter-spacing: .06em; }
+  .verses .src { font-size: .78rem; letter-spacing: .28em; color: #8d8c86; }
+  .chain { font-family: var(--brush); font-size: clamp(1.8rem, 6.5vw, 3rem); letter-spacing: .12em; margin: 0; line-height: 1.3; }
+  .chain span { color: #6d6c67; }
+  .chain .on { color: var(--moon); }
+  .chain-note { margin: 0; color: #a9a8a2; letter-spacing: .08em; font-size: clamp(.9rem, 2.4vw, 1.05rem); line-height: 1.9; }
+  .final { font-family: var(--brush); font-size: clamp(2.2rem, 8vw, 4.2rem); margin: .6rem 0 0; line-height: 1.2; text-wrap: balance; }
+  .final-src { margin: 0; font-size: .8rem; letter-spacing: .3em; color: #8d8c86; }
+  #replay { pointer-events: auto; margin-top: .6rem; font: inherit; font-size: .95rem; letter-spacing: .3em; padding: .6em 1.6em;
+            color: var(--moon); background: transparent; border: 1px solid #6d6c67; cursor: pointer; }
+  #replay:hover { border-color: var(--moon); }
+
+  /* 控制条 */
+  #bar { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 14px;
+         padding: 10px clamp(16px, 4vw, 44px) calc(env(safe-area-inset-bottom, 0px) + 14px); color: var(--fg); }
+  #play { font: inherit; font-size: .85rem; letter-spacing: .2em; min-width: 4.2em; padding: .35em .6em; background: transparent;
+          color: var(--fg); border: 1px solid var(--fg-3); cursor: pointer; }
+  #track { position: relative; flex: 1; height: 34px; cursor: pointer; touch-action: none; }
+  #track::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--fg-3); }
+  #fill { position: absolute; left: 0; top: calc(50% - 1px); height: 3px; background: var(--fg); width: 0; }
+  .tick { position: absolute; top: 0; transform: translateX(-50%); font-family: var(--brush); font-size: 1rem; color: var(--fg-3); line-height: 1; }
+  .tick.on { color: var(--fg); }
+  .tick::after { content: ""; position: absolute; left: 50%; top: 13px; width: 1px; height: 9px; background: currentColor; }
+  #clock { font-size: .8rem; color: var(--fg-2); font-variant-numeric: tabular-nums; min-width: 4.6em; text-align: right; }
+  button:focus-visible, #track:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+
+  @media (max-width: 560px) {
+    .tick { font-size: .85rem; }
+    #clock { display: none; }
+    #sub { bottom: calc(env(safe-area-inset-bottom, 0px) + 70px); }
+  }
+</style>
+
+<div id="app">
+  <canvas id="c" aria-label="黑白水墨动画：一颗种子从入土、出土、积蓄、结果、开花到剥落，最后果实落地重新成为种子"></canvas>
+  <div id="night"></div>
+  <div class="grain"></div>
+
+  <section id="intro" class="layer fade" data-in="0.3" data-out="5.6">
+    <p class="kicker">序卦连读 · 第 22—27 卦</p>
+    <h1>一颗种子</h1>
+    <p class="lede">复 · 无妄 · 大畜 · 颐 · 贲 · 剥 —— 首尾相接，是一个环</p>
+  </section>
+
+  <header id="card" class="layer fade">
+    <p class="kicker"><span id="cNum"></span><span id="cName"></span><span id="cSeason"></span></p>
+    <div id="cChar"></div>
+    <p id="cQuote"></p>
+  </header>
+
+  <div id="hex" class="layer fade" aria-hidden="true">
+    <i><b></b><b></b></i><i><b></b><b></b></i><i><b></b><b></b></i>
+    <i><b></b><b></b></i><i><b></b><b></b></i><i><b></b><b></b></i>
+  </div>
+  <div id="hexName" class="layer fade"></div>
+
+  <p id="sub" class="layer fade"></p>
+
+  <section id="finale" class="layer">
+    <div class="stage">
+      <div id="bigHex" class="fade" data-in="96.8" data-out="113.8" aria-label="卦画：剥变为复">
+        <i><b></b><b></b></i><i><b></b><b></b></i><i><b></b><b></b></i>
+        <i><b></b><b></b></i><i><b></b><b></b></i><i><b></b><b></b></i>
+      </div>
+      <div class="caps">
+        <p class="fade" data-in="97.6" data-out="100.6">剥：五阴在下，一阳在上。<br>硕果不食，最后一点真，剥不掉。</p>
+        <p class="fade" data-in="101" data-out="113.8">「物不可以终尽，剥穷上反下，<br>故受之以复。」</p>
+      </div>
+      <ul class="verses">
+        <li class="fade" data-in="105" data-out="113.8"><span class="v">开到最盛，就是开始落。</span><span class="src">贲 · 致饰然后亨则尽矣</span></li>
+        <li class="fade" data-in="107.8" data-out="113.8"><span class="v">剥掉的是外层，留下的是那一点真。</span><span class="src">剥 · 硕果不食</span></li>
+        <li class="fade" data-in="110.6" data-out="113.8"><span class="v">从最高处出去，从最低处回来。</span><span class="src">复 · 穷上反下</span></li>
+      </ul>
+    </div>
+    <div class="stage">
+      <p class="chain fade" data-in="114.6" id="chain"><span>种</span> <span>真</span> <span>蓄</span> <span>养</span> <span>饰</span> <span>落</span> <span>种</span></p>
+      <p class="chain-note fade" data-in="116.4">凋零的地方，就是下一次入土的地方。<br>那一根阳爻，一直都在。</p>
+      <p class="final fade" data-in="119.5">复，其见天地之心乎</p>
+      <p class="final-src fade" data-in="120.8">《彖传》</p>
+      <button id="replay" class="fade" data-in="123" type="button">再看一遍</button>
+    </div>
+  </section>
+
+  <nav id="bar" aria-label="播放控制">
+    <button id="play" type="button">暂停</button>
+    <div id="track" tabindex="0" role="slider" aria-label="时间轴" aria-valuemin="0" aria-valuemax="128" aria-valuenow="0"><div id="fill"></div></div>
+    <span id="clock">0:00 / 2:08</span>
+  </nav>
+</div>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+</script>
+<script type="module">
+import * as THREE from 'three';
+
+THREE.ColorManagement.enabled = false;
+const V = THREE.Vector3;
+const END = 128;
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ---------- 分镜 ----------
+const CH = [
+  { t0: 0, t1: 6 },
+  { t0: 6, t1: 18, num: '24', name: '地雷复', season: '冬至 · 入土', ch: '种', quote: '至日闭关', lines: [1,0,0,0,0,0],
+    text: '一颗种子落进最底的土里。它现在很小，先养着，不急着出去。' },
+  { t0: 18, t1: 31, num: '25', name: '天雷无妄', season: '春雷 · 出土', ch: '真', quote: '雷真响了才动', lines: [1,0,0,1,1,1],
+    text: '雷响了，才破土。不为收成而耕，只做真的那一步。' },
+  { t0: 31, t1: 45, num: '26', name: '山天大畜', season: '收成 · 入仓', ch: '蓄', quote: '不家食吉', lines: [1,1,1,0,0,1],
+    text: '一根阳长成整个乾天，被山收进腹中。蓄进去的东西，换了形态。' },
+  { t0: 45, t1: 57, num: '27', name: '山雷颐', season: '开饭 · 颐养', ch: '养', quote: '自求口实', lines: [1,0,0,0,0,1],
+    text: '养分从根走上枝头，结成一颗果。蓄的终点不是数字，是养。' },
+  { t0: 57, t1: 69, num: '22', name: '山火贲', season: '晚夏 · 繁华', ch: '饰', quote: '致饰然后亨则尽矣', lines: [1,0,1,0,0,1],
+    text: '满树开花，照得漂漂亮亮。修饰到头，亨通也就用完了。' },
+  { t0: 69, t1: 84, num: '23', name: '山地剥', season: '深秋 · 剥落', ch: '落', quote: '硕果不食', lines: [0,0,0,0,0,1],
+    text: '叶一层层掉，花一瓣瓣散。剥到只剩枝头一颗果，剥不掉。' },
+  { t0: 84, t1: 95, num: '24', name: '地雷复', season: '冬至 · 再入土', ch: '复', quote: '穷上反下', lines: [1,0,0,0,0,0],
+    text: '果子从最高处落下，核埋进最低的土里。又是一颗种子。' },
+  { t0: 95, t1: END },
+];
+
+// ---------- 工具 ----------
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const sstep = (a, b, x) => { const t = clamp((x - a) / (b - a)); return t * t * (3 - 2 * t); };
+const lerp = (a, b, t) => a + (b - a) * t;
+function mulberry(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+const R = mulberry(2026924);
+const easeOutBack = x => { const c = 1.9; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+
+// ---------- 渲染器 ----------
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+const scene = new THREE.Scene();
+const PAPER = [0.914, 0.910, 0.890], INK = [0.078, 0.078, 0.078], WHITE = [0.975, 0.972, 0.962];
+scene.background = new THREE.Color(...PAPER);
+const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 200);
+
+const U = {
+  uInk: { value: new V(...INK) }, uPaper: { value: new V(...PAPER) }, uWhite: { value: new V(...WHITE) },
+  uFogNear: { value: 11 }, uFogFar: { value: 32 },
+};
+const NOISE = `
+float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
+float noise(vec2 p){ vec2 i = floor(p), f = fract(p); f = f*f*(3.-2.*f);
+  return mix(mix(hash(i), hash(i+vec2(1,0)), f.x), mix(hash(i+vec2(0,1)), hash(i+vec2(1,1)), f.x), f.y); }`;
+
+// 实例化平面（叶 / 花 / 花瓣）通用顶点
+const PLANE_VS = `
+attribute float aA; varying vec2 vUv; varying float vA; varying float vFog;
+uniform float uFogNear, uFogFar;
+void main(){ vUv = uv; vA = aA;
+  vec4 mv = modelViewMatrix * instanceMatrix * vec4(position, 1.0);
+  vFog = smoothstep(uFogNear, uFogFar, -mv.z);
+  gl_Position = projectionMatrix * mv; }`;
+
+function mat(vs, fs, extra = {}, opts = {}) {
+  return new THREE.ShaderMaterial({ uniforms: { ...U, ...extra }, vertexShader: vs, fragmentShader: fs, ...opts });
+}
+
+// ---------- 枝干材质：墨色，边深中浅，带飞白 ----------
+const BRANCH_VS = `
+attribute float aA; varying vec2 vUv; varying float vA; varying float vFog; varying float vRim;
+uniform float uFogNear, uFogFar;
+void main(){ vUv = uv; vA = aA;
+  vec4 mv = modelViewMatrix * instanceMatrix * vec4(position, 1.0);
+  vec3 n = normalize(normalMatrix * mat3(instanceMatrix) * normal);
+  vRim = 1.0 - abs(dot(n, normalize(-mv.xyz)));
+  vFog = smoothstep(uFogNear, uFogFar, -mv.z);
+  gl_Position = projectionMatrix * mv; }`;
+const BRANCH_FS = `
+uniform vec3 uInk, uPaper; varying vec2 vUv; varying float vA; varying float vFog; varying float vRim; ${NOISE}
+void main(){
+  float streak = noise(vec2(vUv.x * 30.0, vUv.y * 2.5 + vA * 13.0));
+  float body = (1.0 - smoothstep(0.15, 0.8, vRim)) * 0.22;
+  float tone = clamp(vA + body + (streak - 0.5) * 0.2, 0.0, 1.0);
+  vec3 col = mix(uInk, uPaper, tone);
+  gl_FragColor = vec4(mix(col, uPaper, vFog * 0.85), 1.0); }`;
+
+// ---------- 生成树 ----------
+const UP = new V(0, 1, 0);
+const BASE = new V(0, -0.5, 0);
+function perturb(d, amt) {
+  const v = d.clone().add(new V((R() - .5) * 2 * amt, (R() - .5) * 2 * amt, (R() - .5) * 1.2 * amt));
+  v.z *= 0.7; return v.normalize();
+}
+function rotAway(d, angle, az) {
+  const ref = Math.abs(d.y) < 0.9 ? new V(0, 1, 0) : new V(1, 0, 0);
+  const a = new V().crossVectors(d, ref).normalize();
+  const b = new V().crossVectors(d, a).normalize();
+  const side = a.multiplyScalar(Math.cos(az)).add(b.multiplyScalar(Math.sin(az)));
+  const v = d.clone().multiplyScalar(Math.cos(angle)).add(side.multiplyScalar(Math.sin(angle)));
+  v.z *= 0.55; return v.normalize();
+}
+function makeBranch(list, p, dir, len, r, depth, s0, parent) {
+  const b = { p: p.clone(), dir: dir.clone().normalize(), len, r, depth, s0, parent, kids: [], keep: false, witherT: 74 + R() * 8 };
+  b.end = b.p.clone().addScaledVector(b.dir, len);
+  if (parent) parent.kids.push(b);
+  list.push(b); return b;
+}
+
+const branches = [];
+let az = R() * 6.28;
+{
+  let p = BASE.clone(), dir = UP.clone(), r = 0.2, s = 0; const trunk = [];
+  for (let i = 0; i < 6; i++) {
+    const len = i === 0 ? 1.0 : 0.72;
+    if (i > 0) dir = perturb(dir, 0.14).lerp(UP, 0.4).normalize();
+    const b = makeBranch(branches, p, dir, len, r, 0, s, trunk[i - 1] || null); trunk.push(b);
+    p = b.end; s += len; r *= 0.84;
+  }
+  const grow = (b, depth) => {
+    if (depth > 5) return;
+    const kids = [];
+    if (R() < 0.93) {
+      const d = perturb(b.dir, 0.24).lerp(UP, 0.16).normalize();
+      kids.push(makeBranch(branches, b.end, d, b.len * (0.74 + R() * 0.14), b.r * 0.72, depth, b.s0 + b.len, b));
+    }
+    const nl = R() < 0.68 ? 1 : (R() < 0.45 ? 2 : 0);
+    for (let k = 0; k < nl; k++) {
+      az += 2.39996;
+      const d = rotAway(b.dir, 0.55 + R() * 0.45, az).lerp(UP, 0.1).normalize();
+      kids.push(makeBranch(branches, b.end, d, b.len * (0.6 + R() * 0.2), b.r * 0.6, depth, b.s0 + b.len, b));
+    }
+    kids.forEach(k => grow(k, depth + 1));
+  };
+  for (let i = 1; i < 6; i++) {
+    const tb = trunk[i];
+    const n = i === 5 ? 3 : (i >= 2 ? 1 + (R() < 0.35 ? 1 : 0) : 0);
+    for (let k = 0; k < n; k++) {
+      az += 2.39996;
+      const ang = i === 5 ? 0.35 + R() * 0.4 : 0.85 + R() * 0.35;
+      const b = makeBranch(branches, tb.end, rotAway(tb.dir, ang, az), 1.1 * (1 - i * 0.06) * (0.85 + R() * 0.3), tb.r * 0.62, 1, tb.s0 + tb.len, tb);
+      grow(b, 2);
+    }
+  }
+}
+function normalizeTree(list, targetY, targetX, down) {
+  let ext = 0, wx = 0;
+  for (const b of list) { ext = Math.max(ext, Math.abs(b.end.y - BASE.y)); wx = Math.max(wx, Math.abs(b.end.x)); }
+  const f = Math.min(targetY / ext, targetX / wx);
+  for (const b of list) {
+    b.p.sub(BASE).multiplyScalar(f).add(BASE); b.end.sub(BASE).multiplyScalar(f).add(BASE);
+    b.len *= f; b.s0 *= f; b.r *= Math.sqrt(f);
+  }
+  let maxS = 0; for (const b of list) maxS = Math.max(maxS, b.s0 + b.len);
+  return maxS;
+}
+const MAXS = normalizeTree(branches, 6.4, 4.3);
+
+// 根
+const roots = [];
+{
+  const DOWN = new V(0, -1, 0);
+  const grow = (b, depth) => {
+    if (depth > 3) return;
+    const n = R() < 0.55 ? 2 : 1;
+    for (let k = 0; k < n; k++) {
+      az += 2.39996;
+      const d = rotAway(b.dir, k === 0 ? 0.25 + R() * 0.3 : 0.6 + R() * 0.5, az).lerp(DOWN, 0.18).normalize();
+      grow(makeBranch(roots, b.end, d, b.len * (0.62 + R() * 0.2), b.r * 0.62, depth, b.s0 + b.len, b), depth + 1);
+    }
+  };
+  grow(makeBranch(roots, BASE, DOWN, 0.9, 0.07, 0, 0, null), 1);
+  for (let i = 0; i < 4; i++) {
+    az += 2.39996;
+    grow(makeBranch(roots, BASE, rotAway(DOWN, 0.7 + R() * 0.5, i * 1.57 + R()), 0.8 + R() * 0.3, 0.06, 0, 0.15, null), 1);
+  }
+}
+const ROOTS_MAXS = normalizeTree(roots, 2.6, 3.4);
+
+// 果：选最高、靠中的枝梢
+let fruitB = null;
+{
+  let best = -1e9;
+  for (const b of branches) if (b.depth >= 3) {
+    const sc = b.end.y - 0.45 * Math.abs(b.end.x) - 0.3 * Math.abs(b.end.z);
+    if (sc > best) { best = sc; fruitB = b; }
+  }
+  for (let b = fruitB; b; b = b.parent) b.keep = true;
+}
+const FR = 0.26;
+const FRUIT = fruitB.end.clone().add(new V(0, -FR - 0.1, 0.4));
+const SIDE = FRUIT.x >= 0 ? 1 : -1;
+const LAND = new V(FRUIT.x + SIDE * 1.5, FR, FRUIT.z + 0.4);
+const SEED2 = new V(LAND.x, -0.5, LAND.z);
+
+// ---------- 枝干网格 ----------
+function branchMesh(list, withKnots) {
+  const cyl = new THREE.CylinderGeometry(0.72, 1, 1, 9, 1, true).translate(0, 0.5, 0);
+  const m = mat(BRANCH_VS, BRANCH_FS);
+  const mesh = new THREE.InstancedMesh(cyl, m, list.length);
+  const tone = new THREE.InstancedBufferAttribute(new Float32Array(list.length), 1);
+  cyl.setAttribute('aA', tone); mesh.frustumCulled = false; scene.add(mesh);
+  list.forEach(b => { b.q = new THREE.Quaternion().setFromUnitVectors(UP, b.dir); });
+  let knots = null, ktone = null;
+  if (withKnots) {
+    const sph = new THREE.SphereGeometry(1, 10, 8);
+    knots = new THREE.InstancedMesh(sph, mat(BRANCH_VS, BRANCH_FS), list.length);
+    ktone = new THREE.InstancedBufferAttribute(new Float32Array(list.length), 1);
+    sph.setAttribute('aA', ktone); knots.frustumCulled = false; scene.add(knots);
+  }
+  return { mesh, tone, knots, ktone };
+}
+const TREE = branchMesh(branches, true);
+const ROOT = branchMesh(roots, true);
+
+// ---------- 叶 ----------
+const LEAF_FS = `
+uniform vec3 uInk, uPaper; varying vec2 vUv; varying float vA; varying float vFog; ${NOISE}
+void main(){
+  float u = (vUv.x - 0.5) * 2.0, v = vUv.y;
+  float w = pow(max(sin(3.14159 * pow(v, 0.75)), 0.0), 0.85) * 0.95;
+  if (abs(u) > w || v < 0.02) discard;
+  float edge = smoothstep(w - 0.3, w, abs(u));
+  float vein = 1.0 - smoothstep(0.0, 0.07, abs(u));
+  float n = noise(vUv * vec2(5.0, 12.0) + vA * 20.0);
+  float tone = vA - (1.0 - v) * 0.06 + vein * 0.3 * (1.0 - vA) * smoothstep(0.1, 0.5, v) + (n - 0.5) * 0.14 - edge * 0.06;
+  vec3 col = mix(uInk, uPaper, clamp(tone, 0.0, 1.0));
+  gl_FragColor = vec4(mix(col, uPaper, vFog * 0.85), 1.0); }`;
+
+function orientQ(dir, twist = 0) {
+  const y = dir.clone().normalize();
+  let x = new V().crossVectors(y, new V(0, 0, 1));
+  if (x.lengthSq() < 1e-4) x.set(1, 0, 0);
+  x.normalize(); const z = new V().crossVectors(x, y).normalize();
+  const q = new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(x, y, z));
+  return q.multiply(new THREE.Quaternion().setFromAxisAngle(UP, twist));
+}
+function faller(p, v, spread) {
+  return {
+    v, wind: 0.35 + R() * 0.6, fw: 1.5 + R() * 2.5, ph: R() * 6.28, sway: spread * (0.6 + R() * 0.6),
+    spin: new V((R() - .5) * 5, (R() - .5) * 5, (R() - .5) * 5), gy: 0.02 + R() * 0.04,
+    flat: new THREE.Quaternion().setFromEuler(new THREE.Euler(-Math.PI / 2, 0, R() * 6.28)),
+    T: (p.y - 0.04) / v,
+  };
+}
+const leaves = [];
+// 两片子叶
+for (let k = 0; k < 2; k++) leaves.push({ coty: k, size: 0.2, q: orientQ(new V(k ? 1 : -1, 0.75, 0.1), k ? 0.2 : -0.2) });
+for (const b of branches) if (b.depth >= 2) {
+  const n = b.depth >= 4 ? 3 : 2;
+  for (let k = 0; k < n; k++) {
+    const f = k === n - 1 ? (b === fruitB ? 0.35 : 1) : 0.3 + R() * 0.6;
+    const pos = b.p.clone().addScaledVector(b.dir, b.len * f);
+    if (pos.distanceTo(FRUIT) < 0.95) continue; // 给果子留出位置
+    const L = {
+      pos, q: orientQ(rotAway(b.dir, 0.7 + R() * 0.7, R() * 6.28), (R() - .5) * 0.8),
+      size: 0.24 + R() * 0.16, sAt: b.s0 + b.len * f, tIn: 31.5 + R() * 3, tone: 0.04 + R() * 0.32,
+      tDet: 70 + Math.pow(R(), 0.8) * 11,
+    };
+    Object.assign(L, faller(pos, 0.75 + R() * 0.6, 0.35));
+    leaves.push(L);
+  }
+}
+const leafGeo = new THREE.PlaneGeometry(0.5, 1).translate(0, 0.5, 0);
+const leafA = new THREE.InstancedBufferAttribute(new Float32Array(leaves.length), 1);
+leafGeo.setAttribute('aA', leafA);
+const leafMesh = new THREE.InstancedMesh(leafGeo, mat(PLANE_VS, LEAF_FS, {}, { side: THREE.DoubleSide }), leaves.length);
+leafMesh.frustumCulled = false; scene.add(leafMesh);
+
+// ---------- 花（墨梅：白瓣墨线）与花瓣 ----------
+const FLOWER_FS = `
+uniform vec3 uInk, uPaper, uWhite; varying vec2 vUv; varying float vA; varying float vFog;
+void main(){
+  vec2 c = vUv - 0.5; float open = vA;
+  vec3 col = vec3(-1.0); float w = 0.022;
+  for (int i = 0; i < 5; i++) {
+    float a = float(i) * 1.2566 + 0.35;
+    vec2 pc = vec2(cos(a), sin(a)) * 0.2 * open;
+    float d = length(c - pc) - 0.165 * (0.45 + 0.55 * open);
+    if (d < 0.0) col = d > -w ? uInk : uWhite;
+  }
+  float r = length(c);
+  if (r < 0.075) col = uWhite;
+  for (int k = 0; k < 7; k++) {
+    float a = float(k) * 0.8976;
+    if (length(c - vec2(cos(a), sin(a)) * 0.085 * open) < 0.016) col = uInk;
+  }
+  if (r < 0.022) col = uInk;
+  if (col.x < 0.0) discard;
+  gl_FragColor = vec4(mix(col, uPaper, vFog * 0.85), 1.0); }`;
+const PETAL_FS = `
+uniform vec3 uInk, uPaper, uWhite; varying vec2 vUv; varying float vA; varying float vFog;
+void main(){
+  vec2 c = (vUv - 0.5) * vec2(1.0, 1.15); float d = length(c) - 0.45;
+  if (d > 0.0) discard;
+  vec3 col = d > -0.07 ? uInk : uWhite;
+  col = mix(col, uPaper, vA);
+  gl_FragColor = vec4(mix(col, uPaper, vFog * 0.85), 1.0); }`;
+
+const flowers = [];
+for (const b of branches) if (b.depth >= 3 && b !== fruitB) {
+  const n = R() < 0.75 ? 1 : 2;
+  for (let k = 0; k < n; k++) {
+    const f = k === 0 ? 1 : 0.45 + R() * 0.4;
+    const pos = b.p.clone().addScaledVector(b.dir, b.len * f).add(new V((R() - .5) * 0.1, (R() - .5) * 0.1, 0.05 + R() * 0.08));
+    const size = 0.3 + R() * 0.14;
+    const q = new THREE.Quaternion().setFromEuler(new THREE.Euler((R() - .5) * 0.9, (R() - .5) * 0.9, R() * 6.28));
+    const Fl = { pos, size, q, tB: 57.6 + Math.pow(R(), 0.7) * 8, tDet: 69.8 + Math.pow(R(), 0.9) * 9.5, petals: [] };
+    for (let i = 0; i < 5; i++) {
+      const a = i * 1.2566 + 0.35;
+      const off = new V(Math.cos(a) * 0.2 * size, Math.sin(a) * 0.2 * size, 0).applyQuaternion(q);
+      const pp = pos.clone().add(off);
+      const P = { pos: pp, q: q.clone(), size: size * 0.36 };
+      Object.assign(P, faller(pp, 0.45 + R() * 0.45, 0.5));
+      Fl.petals.push(P);
+    }
+    flowers.push(Fl);
+  }
+}
+const flowerGeo = new THREE.PlaneGeometry(1, 1);
+const flowerA = new THREE.InstancedBufferAttribute(new Float32Array(flowers.length), 1);
+flowerGeo.setAttribute('aA', flowerA);
+const flowerMesh = new THREE.InstancedMesh(flowerGeo, mat(PLANE_VS, FLOWER_FS, {}, { side: THREE.DoubleSide }), flowers.length);
+flowerMesh.frustumCulled = false; scene.add(flowerMesh);
+const petals = flowers.flatMap(f => f.petals.map(p => Object.assign(p, { tDet: f.tDet })));
+const petalGeo = new THREE.PlaneGeometry(1, 1);
+const petalA = new THREE.InstancedBufferAttribute(new Float32Array(petals.length), 1);
+petalGeo.setAttribute('aA', petalA);
+const petalMesh = new THREE.InstancedMesh(petalGeo, mat(PLANE_VS, PETAL_FS, {}, { side: THREE.DoubleSide }), petals.length);
+petalMesh.frustumCulled = false; scene.add(petalMesh);
+
+// ---------- 果 / 种 ----------
+const ORB_VS = `varying vec3 vN; varying vec3 vV; varying vec3 vP;
+void main(){ vec4 mv = modelViewMatrix * vec4(position, 1.0); vN = normalize(normalMatrix * normal); vV = -mv.xyz; vP = position; gl_Position = projectionMatrix * mv; }`;
+const ORB_FS = `uniform vec3 uInk, uPaper; varying vec3 vN; varying vec3 vV; varying vec3 vP; ${NOISE}
+void main(){ vec3 n = normalize(vN); float ndv = clamp(dot(n, normalize(vV)), 0.0, 1.0);
+  float hl = smoothstep(0.92, 0.985, dot(n, normalize(vec3(-0.5, 0.6, 0.62))));
+  float tone = 0.04 + 0.2 * pow(ndv, 1.6) + 0.07 * noise(vP.xy * 7.0) + hl * 0.9;
+  gl_FragColor = vec4(mix(uInk, uPaper, clamp(tone, 0.0, 1.0)), 1.0); }`;
+const orb = new THREE.Mesh(new THREE.SphereGeometry(1, 40, 28), mat(ORB_VS, ORB_FS));
+scene.add(orb);
+const stem = new THREE.Mesh(new THREE.CylinderGeometry(0.014, 0.02, 1, 6).translate(0, -0.5, 0), new THREE.MeshBasicMaterial({ color: new THREE.Color(...INK) }));
+stem.position.copy(fruitB.end).setZ(FRUIT.z); scene.add(stem);
+
+// ---------- 地面剖切线 / 土壤剖面 ----------
+const groundMat = mat(`varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`,
+`uniform vec3 uInk; uniform float uDraw; varying vec2 vUv; ${NOISE}
+void main(){ float x = vUv.x; if (x > uDraw) discard;
+  float thick = 0.5 + 0.35 * noise(vec2(x * 9.0, 1.0)) + 0.12 * noise(vec2(x * 60.0, 3.0));
+  if (abs(vUv.y - 0.5) * 2.0 > thick) discard;
+  float dry = noise(vec2(x * 160.0, vUv.y * 5.0));
+  float taper = smoothstep(0.0, 0.04, x) * smoothstep(1.0, 0.95, x);
+  if (dry < 0.28 * (1.0 - taper) + 0.25 * smoothstep(uDraw - 0.03, uDraw, x)) discard;
+  gl_FragColor = vec4(uInk, 1.0); }`, { uDraw: { value: 0 } });
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(30, 0.075), groundMat);
+ground.position.set(0, 0, 0.9); scene.add(ground);
+
+const soilMat = mat(`varying vec3 vW; void main(){ vec4 w = modelMatrix * vec4(position, 1.0); vW = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }`,
+`uniform vec3 uInk, uPaper; uniform float uSoil; varying vec3 vW; ${NOISE}
+void main(){ float depth = -vW.y;
+  float q = fract((vW.x + vW.y) * 2.3);
+  float hatch = 1.0 - smoothstep(0.0, 0.06, abs(q - 0.5));
+  float dots = step(0.993, hash(floor(vW.xy * 46.0)));
+  float fade = 1.0 - smoothstep(0.4, 3.8, depth);
+  float tone = 0.9 - 0.05 * noise(vW.xy * 2.5) - (hatch * 0.3 + dots * 0.4) * fade;
+  gl_FragColor = vec4(mix(uInk, uPaper, tone), uSoil * (0.55 + 0.45 * fade)); }`,
+  { uSoil: { value: 0 } }, { transparent: true, depthWrite: false });
+const soil = new THREE.Mesh(new THREE.PlaneGeometry(70, 9).translate(0, -4.5, 0), soilMat);
+soil.position.z = -1.6; scene.add(soil);
+
+// ---------- 远山（艮） ----------
+const mountains = [];
+[[-10, 0.44, 0.1, 0.62, 3.2, 5.0], [-18, 0.52, 0.16, 0.42, 2.3, 3.5], [-28, 0.6, 0.2, 0.26, 1.6, 2.4]].forEach(([z, base, amp, tone, freq, fall], i) => {
+  const m = mat(`varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`,
+  `uniform vec3 uInk; uniform float uOp, uSeed, uBase, uAmp, uTone, uFreq, uFall; varying vec2 vUv; ${NOISE}
+  float n1(float x){ return noise(vec2(x, uSeed)); }
+  void main(){ float x = vUv.x * uFreq + uSeed;
+    float h = 0.0, a = 0.5, f = 1.0;
+    for (int k = 0; k < 5; k++) { h += a * (1.0 - abs(n1(x * f) * 2.0 - 1.0)); f *= 2.1; a *= 0.5; }
+    float ridge = uBase + uAmp * (h - 0.5) * 2.0;
+    float d = ridge - vUv.y; if (d < 0.0) discard;
+    float wash = exp(-d * uFall * 6.0);
+    float tex = noise(vUv * vec2(90.0, 30.0) + uSeed);
+    float line = 1.0 - smoothstep(0.0, 0.004, d);
+    float a2 = clamp(wash * (0.7 + 0.45 * tex) + line * 0.5, 0.0, 1.0) * uTone * uOp;
+    gl_FragColor = vec4(uInk, a2); }`,
+  { uOp: { value: 0 }, uSeed: { value: 3.7 + i * 11.3 }, uBase: { value: base }, uAmp: { value: amp }, uTone: { value: tone }, uFreq: { value: freq }, uFall: { value: fall } },
+  { transparent: true, depthWrite: false });
+  const mesh = new THREE.Mesh(new THREE.PlaneGeometry(90, 22), m);
+  mesh.position.set(0, 3, z); scene.add(mesh); mountains.push(m);
+});
+
+// ---------- 雷（震） ----------
+const bolt = (() => {
+  const pts = []; let x = -2.2, y = 11;
+  while (y > 0) { pts.push(new V(x, y, -3)); y -= 0.5 + R() * 0.7; x += (R() - 0.45) * 0.9 * Math.min(1, y / 4 + 0.3); }
+  pts.push(new V(0.1, 0, -3));
+  const pos = [], idx = [];
+  pts.forEach((p, i) => { const w = 0.07 * (1 - i / pts.length) + 0.02; pos.push(p.x - w, p.y, p.z, p.x + w, p.y, p.z); if (i) { const a = i * 2; idx.push(a - 2, a - 1, a, a - 1, a + 1, a); } });
+  const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setIndex(idx);
+  const m = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ color: new THREE.Color(...INK), transparent: true, opacity: 0, side: THREE.DoubleSide }));
+  scene.add(m); return m;
+})();
+
+// ---------- 地脉涟漪 ----------
+const pulseMat = mat(`varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`,
+`uniform vec3 uInk; uniform float uAmt, uT; varying vec2 vUv;
+void main(){ float r = length(vUv - 0.5) * 2.0, a = 0.0;
+  for (int k = 0; k < 3; k++) { float ph = fract(uT * 0.42 + float(k) / 3.0); a += (1.0 - ph) * (1.0 - smoothstep(0.0, 0.022, abs(r - ph))); }
+  a *= uAmt; if (a < 0.01) discard; gl_FragColor = vec4(uInk, a * 0.6); }`,
+  { uAmt: { value: 0 }, uT: { value: 0 } }, { transparent: true, depthWrite: false });
+const pulse = new THREE.Mesh(new THREE.PlaneGeometry(1.8, 1.8), pulseMat); scene.add(pulse);
+
+// ---------- 墨点粒子：大畜收天、颐养上行 ----------
+const gather = [], nourish = [];
+const tipList = branches.filter(b => b.depth >= 2);
+for (let i = 0; i < 340; i++) {
+  const b = tipList[Math.floor(R() * tipList.length)];
+  gather.push({ a: new V((R() - .5) * 20, 5 + R() * 5, -12 + R() * 9), b: b.end.clone(), ts: 32.5 + R() * 10.5, d: 2.4 + R() * 2, s: 2.5 + R() * 3 });
+}
+const rootTips = roots.filter(b => b.kids.length === 0);
+const fruitChain = []; for (let b = fruitB; b; b = b.parent) fruitChain.unshift(b);
+const paths = rootTips.slice(0, 8).map(tip => {
+  const up = []; for (let b = tip; b; b = b.parent) up.push(b === tip ? b.end : null, b.p);
+  const pts = up.filter(Boolean).concat(fruitChain.map(b => b.end), [FRUIT]);
+  const cum = [0]; for (let i = 1; i < pts.length; i++) cum.push(cum[i - 1] + pts[i].distanceTo(pts[i - 1]));
+  return { pts, cum, L: cum[cum.length - 1] };
+});
+for (let i = 0; i < 180; i++) nourish.push({ path: paths[i % paths.length], ph: R(), s: 2 + R() * 2.5, j: new V((R() - .5) * 0.06, 0, (R() - .5) * 0.06) });
+function along(path, u, out) {
+  const d = u * path.L; let i = 1; while (i < path.cum.length - 1 && path.cum[i] < d) i++;
+  const k = (d - path.cum[i - 1]) / Math.max(1e-6, path.cum[i] - path.cum[i - 1]);
+  return out.copy(path.pts[i - 1]).lerp(path.pts[i], clamp(k));
+}
+const NP = gather.length + nourish.length;
+const ptGeo = new THREE.BufferGeometry();
+const ptPos = new Float32Array(NP * 3), ptSize = new Float32Array(NP), ptAlpha = new Float32Array(NP);
+ptGeo.setAttribute('position', new THREE.BufferAttribute(ptPos, 3));
+ptGeo.setAttribute('aSize', new THREE.BufferAttribute(ptSize, 1));
+ptGeo.setAttribute('aAlpha', new THREE.BufferAttribute(ptAlpha, 1));
+const ptMat = mat(`attribute float aSize; attribute float aAlpha; varying float vAl; uniform float uPR;
+void main(){ vAl = aAlpha; vec4 mv = modelViewMatrix * vec4(position, 1.0); gl_PointSize = aSize * uPR * (10.0 / -mv.z); gl_Position = projectionMatrix * mv; }`,
+`uniform vec3 uInk; varying float vAl; void main(){ float d = length(gl_PointCoord - 0.5); if (d > 0.5) discard; gl_FragColor = vec4(uInk, vAl * smoothstep(0.5, 0.15, d)); }`,
+  { uPR: { value: renderer.getPixelRatio() } }, { transparent: true, depthWrite: false });
+const points = new THREE.Points(ptGeo, ptMat); points.frustumCulled = false; scene.add(points);
+
+// ---------- 时间函数 ----------
+function treeP(t) { if (t < 20.3) return 0; if (t < 31) { const x = (t - 20.3) / 10.7; return 0.13 * (1 - (1 - x) * (1 - x)); } return 0.13 + 0.87 * sstep(31, 45, t); }
+function rootP(t) { return 0.25 * sstep(8.5, 18, t) + 0.75 * sstep(20.5, 45, t); }
+
+function orbState(t, out) {
+  // 返回 [可见, sx, sy, sz]，位置写入 out
+  const seedS = [0.075, 0.105, 0.075];
+  if (t < 2.4) return [0];
+  if (t < 3.6) { out.set(0, 7 - 0.5 * 9.72 * (t - 2.4) ** 2, 0); return [1, ...seedS]; }
+  if (t < 4.3) { out.set(0, 0.1 + 0.22 * Math.sin(Math.PI * (t - 3.6) / 0.7) * 0.6, 0); return [1, ...seedS]; }
+  if (t < 34) { out.set(0, lerp(0.1, BASE.y, sstep(6.5, 10.5, t)), 0); const k = 1 - sstep(24, 34, t); return [k > 0.01 ? 1 : 0, ...seedS.map(s => s * k)]; }
+  if (t < 85.5) { out.copy(FRUIT); const k = sstep(47, 55, t) * FR; return [k > 0.005 ? 1 : 0, k, k * 1.06, k]; }
+  const T = Math.sqrt(2 * (FRUIT.y - FR) / 9.8);
+  if (t < 85.5 + T) { const d = t - 85.5, k = d / T; out.set(lerp(FRUIT.x, LAND.x, k), FRUIT.y - 0.5 * 9.8 * d * d, lerp(FRUIT.z, LAND.z, k)); return [1, FR, FR * 1.06, FR]; }
+  const d = t - 85.5 - T;
+  if (d < 0.5) { out.set(LAND.x, FR + 0.25 * Math.sin(Math.PI * d / 0.5), LAND.z); return [1, FR, FR * 1.06, FR]; }
+  const k = sstep(88.2, 92, t);
+  out.set(LAND.x, lerp(FR, SEED2.y, k), LAND.z);
+  return [1, lerp(FR, seedS[0], k), lerp(FR * 1.06, seedS[1], k), lerp(FR, seedS[2], k)];
+}
+
+const arr = v => v.toArray();
+const add = (a, b) => [a.x + b[0], a.y + b[1], a.z + b[2]];
+const KEYS = [
+  [0, [0, 3.2, 13], [0, 3.0, 0]],
+  [3.4, [0, 2.9, 12.2], [0, 2.4, 0]],
+  [6.6, [0, -0.05, 4.4], [0, -0.3, 0]],
+  [17, [0.4, -0.1, 3.8], [0, -0.35, 0]],
+  [19.3, [0, 1.8, 9.5], [0, 1.9, 0]],
+  [21, [0, 1.4, 8.4], [0, 1.3, 0]],
+  [25, [0, 0.45, 4.6], [0, 0.3, 0]],
+  [31, [0, 1.3, 7.5], [0, 1.2, 0]],
+  [40, [-1.3, 3.1, 12.8], [0, 3.0, 0]],
+  [46, [0, 3.2, 12.4], [0, 3.1, 0]],
+  [51, [FRUIT.x * 0.6 + 0.6, FRUIT.y - 0.4, 9.6], add(FRUIT, [0, -1.0, 0])],
+  [56, [FRUIT.x * 0.6 + 0.2, FRUIT.y - 1.2, 10.4], add(FRUIT, [0, -1.6, 0])],
+  [60.5, [0, 3.2, 13.2], [0, 3.0, 0]],
+  [67.5, [1.4, 3.0, 12.4], [0, 3.0, 0]],
+  [77, [-0.6, 3.1, 12.6], [0, 3.1, 0]],
+  [84.3, add(FRUIT, [0.6, -0.3, 4.6]), add(FRUIT, [0, -0.1, 0])],
+  [87, add(LAND, [SIDE * 1.2, 0.5, 4.6]), add(LAND, [0, 0.1, 0])],
+  [92.5, add(SEED2, [SIDE * 0.9, 0.35, 3.8]), add(SEED2, [0, 0.15, 0])],
+  [END, add(SEED2, [SIDE * 0.7, 0.25, 3.4]), add(SEED2, [0, 0.15, 0])],
+];
+const _cp = new V(), _ct = new V();
+function cameraAt(t) {
+  let i = 0; while (i < KEYS.length - 2 && KEYS[i + 1][0] <= t) i++;
+  const [ta, pa, ga] = KEYS[i], [tb, pb, gb] = KEYS[i + 1];
+  const k = sstep(ta, tb, t);
+  _cp.set(lerp(pa[0], pb[0], k), lerp(pa[1], pb[1], k), lerp(pa[2], pb[2], k));
+  _ct.set(lerp(ga[0], gb[0], k), lerp(ga[1], gb[1], k), lerp(ga[2], gb[2], k));
+  if (!reduceMotion) {
+    _cp.x += Math.sin(t * 0.13) * 0.25; _cp.y += Math.sin(t * 0.09 + 1) * 0.08;
+    const shake = (1 - sstep(19.6, 20.9, t)) * (t > 19.6 ? 1 : 0) * 0.12;
+    _cp.x += (Math.random() - .5) * shake; _cp.y += (Math.random() - .5) * shake;
+  }
+  camera.position.copy(_cp); camera.lookAt(_ct);
+}
+
+// ---------- 每帧更新 ----------
+const _m = new THREE.Matrix4(), _s = new V(), _p = new V(), _q = new THREE.Quaternion(), _e = new THREE.Euler(), ZERO = new THREE.Matrix4().makeScale(0, 0, 0);
+const _qs = new THREE.Quaternion();
+
+function updateBranches(list, M, S, thick, tonePlus, isTree, t) {
+  for (let i = 0; i < list.length; i++) {
+    const b = list[i];
+    let g = clamp((S - b.s0) / b.len);
+    if (isTree && !b.keep && b.depth >= 4) g *= 1 - sstep(b.witherT, b.witherT + 2.5, t);
+    const r = b.r * thick;
+    if (g <= 0.001) { M.mesh.setMatrixAt(i, ZERO); M.knots.setMatrixAt(i, ZERO); }
+    else {
+      M.mesh.setMatrixAt(i, _m.compose(b.p, b.q, _s.set(r, b.len * g, r)));
+      M.knots.setMatrixAt(i, _m.compose(b.p, b.q, _s.set(r, r, r)));
+    }
+    const base = isTree ? (b.depth === 0 ? 0.02 : Math.min(0.3, 0.05 + b.depth * 0.04)) : 0.34;
+    const tone = base + (isTree && b.depth >= 2 && !b.keep ? tonePlus : tonePlus * 0.4);
+    M.tone.array[i] = tone; M.ktone.array[i] = tone;
+  }
+  M.mesh.instanceMatrix.needsUpdate = true; M.knots.instanceMatrix.needsUpdate = true;
+  M.tone.needsUpdate = true; M.ktone.needsUpdate = true;
+}
+
+function fall(o, t, basePos, baseQ, size, mesh, i, attr, toneBase, fadeDur) {
+  const dt = t - o.tDet;
+  if (dt < o.T) {
+    const sw = Math.sin(dt * o.fw + o.ph) * o.sway;
+    _p.set(basePos.x + o.wind * dt + sw, basePos.y - o.v * dt, basePos.z + Math.cos(dt * o.fw * 0.7 + o.ph) * o.sway * 0.6);
+    _q.copy(baseQ).multiply(_qs.setFromEuler(_e.set(o.spin.x * dt, o.spin.y * dt, o.spin.z * dt)));
+    mesh.setMatrixAt(i, _m.compose(_p, _q, _s.setScalar(size)));
+    attr.array[i] = toneBase;
+  } else {
+    _p.set(basePos.x + o.wind * o.T + Math.sin(o.T * o.fw + o.ph) * o.sway, o.gy, basePos.z + Math.cos(o.T * o.fw * 0.7 + o.ph) * o.sway * 0.6);
+    mesh.setMatrixAt(i, _m.compose(_p, o.flat, _s.setScalar(size)));
+    attr.array[i] = lerp(toneBase, 1, sstep(0, fadeDur, dt - o.T));
+  }
+}
+
+function updateScene(t) {
+  const S = treeP(t) * MAXS;
+  const thick = lerp(0.22, 1, sstep(21, 46, t));
+  const wither = 0.3 * sstep(70, 84, t);
+  updateBranches(branches, TREE, S, thick, wither, true, t);
+  updateBranches(roots, ROOT, rootP(t) * ROOTS_MAXS, lerp(0.35, 1, sstep(20, 46, t)), 0, false, t);
+
+  // 叶
+  const trunkTip = BASE.y + Math.min(S, branches[0].len);
+  for (let i = 0; i < leaves.length; i++) {
+    const L = leaves[i];
+    if (L.coty !== undefined) {
+      const k = sstep(22.8, 25.5, t) * (1 - sstep(31, 36, t));
+      if (k < 0.01) { leafMesh.setMatrixAt(i, ZERO); continue; }
+      leafMesh.setMatrixAt(i, _m.compose(_p.set(0, trunkTip - 0.02, 0.02), L.q, _s.setScalar(L.size * k)));
+      leafA.array[i] = 0.12; continue;
+    }
+    const grow = sstep(0, 0.7, S - L.sAt) * sstep(L.tIn, L.tIn + 2.2, t);
+    if (grow < 0.01) { leafMesh.setMatrixAt(i, ZERO); continue; }
+    const tone = L.tone + (0.62 - L.tone) * sstep(69, L.tDet + 0.5, t);
+    if (t < L.tDet) {
+      const flutter = sstep(69, 72, t) * Math.sin(t * 7 + L.ph) * 0.15;
+      _q.copy(L.q).multiply(_qs.setFromEuler(_e.set(flutter, 0, flutter * 0.6)));
+      leafMesh.setMatrixAt(i, _m.compose(L.pos, _q, _s.setScalar(L.size * grow)));
+      leafA.array[i] = tone;
+    } else fall(L, t, L.pos, L.q, L.size, leafMesh, i, leafA, tone, 5);
+  }
+  leafMesh.instanceMatrix.needsUpdate = true; leafA.needsUpdate = true;
+
+  // 花
+  for (let i = 0; i < flowers.length; i++) {
+    const F = flowers[i];
+    const k = clamp((t - F.tB) / 1.1);
+    const gone = sstep(F.tDet - 0.05, F.tDet + 0.15, t);
+    const sc = k <= 0 ? 0 : F.size * easeOutBack(k) * (1 - gone);
+    if (sc < 0.003) flowerMesh.setMatrixAt(i, ZERO);
+    else flowerMesh.setMatrixAt(i, _m.compose(F.pos, F.q, _s.setScalar(sc)));
+    flowerA.array[i] = sstep(0, 1, k);
+  }
+  flowerMesh.instanceMatrix.needsUpdate = true; flowerA.needsUpdate = true;
+  for (let i = 0; i < petals.length; i++) {
+    const P = petals[i];
+    if (t < P.tDet) { petalMesh.setMatrixAt(i, ZERO); continue; }
+    fall(P, t, P.pos, P.q, P.size, petalMesh, i, petalA, 0, 3);
+  }
+  petalMesh.instanceMatrix.needsUpdate = true; petalA.needsUpdate = true;
+
+  // 果 / 种
+  const os = orbState(t, orb.position);
+  orb.visible = !!os[0];
+  if (os[0]) orb.scale.set(os[1], os[2], os[3]);
+  const hanging = t > 47 && t < 85.5;
+  stem.visible = hanging;
+  stem.scale.set(1, (fruitB.end.y - (FRUIT.y + FR * sstep(47, 55, t))) , 1);
+
+  // 地面 / 土 / 山 / 雷 / 涟漪
+  groundMat.uniforms.uDraw.value = sstep(1.2, 4.2, t);
+  soilMat.uniforms.uSoil.value = sstep(6, 9.5, t);
+  const mOp = sstep(31, 37, t) * (1 - 0.45 * sstep(80, 88, t));
+  mountains.forEach(m => { m.uniforms.uOp.value = mOp; });
+  const flash = (t > 19.55 && t < 19.9) || (t > 20.15 && t < 20.4);
+  bolt.material.opacity = flash ? (0.75 + 0.25 * Math.sin(t * 90)) : 0;
+  canvas.style.filter = !reduceMotion && ((t > 19.58 && t < 19.68) || (t > 20.18 && t < 20.24)) ? 'invert(1)' : '';
+  pulse.position.copy(orb.position).add(_p.set(0, 0, 0.35));
+  pulse.lookAt(camera.position);
+  pulseMat.uniforms.uT.value = t;
+  pulseMat.uniforms.uAmt.value = sstep(9.5, 11, t) * (1 - sstep(17, 19, t)) + sstep(91, 93, t) * (1 - sstep(99, 102, t));
+
+  // 粒子
+  let n = 0;
+  for (const g of gather) {
+    const k = (t - g.ts) / g.d;
+    if (k <= 0 || k >= 1) { ptAlpha[n] = 0; ptSize[n] = 0; n++; continue; }
+    const e = k * k * (3 - 2 * k);
+    _p.copy(g.a).lerp(g.b, e); _p.y += Math.sin(e * Math.PI) * 1.2;
+    ptPos.set([_p.x, _p.y, _p.z], n * 3);
+    ptAlpha[n] = sstep(0, 0.15, k) * (1 - sstep(0.8, 1, k)) * 0.8; ptSize[n] = g.s * (1 - 0.6 * e); n++;
+  }
+  const nAmt = sstep(46, 48, t) * (1 - sstep(55, 57, t));
+  for (const q of nourish) {
+    const u = ((t - 46) * 0.11 + q.ph) % 1;
+    if (nAmt <= 0 || t < 46) { ptAlpha[n] = 0; ptSize[n] = 0; n++; continue; }
+    along(q.path, u, _p).add(q.j);
+    ptPos.set([_p.x, _p.y, _p.z + 0.12], n * 3);
+    ptAlpha[n] = nAmt * sstep(0, 0.08, u) * (1 - sstep(0.93, 1, u)) * 0.85; ptSize[n] = q.s; n++;
+  }
+  ptGeo.attributes.position.needsUpdate = true; ptGeo.attributes.aSize.needsUpdate = true; ptGeo.attributes.aAlpha.needsUpdate = true;
+
+  cameraAt(t);
+}
+
+// ---------- HUD ----------
+const $ = id => document.getElementById(id);
+const card = $('card'), hex = $('hex'), hexName = $('hexName'), sub = $('sub');
+const hexLines = [...hex.children];
+const bigLines = [...$('bigHex').children];
+const timed = [...document.querySelectorAll('[data-in]')];
+const chainSpans = [...$('chain').children];
+let shown = -1;
+
+function chapterIdx(t) { let i = 0; while (i < CH.length - 1 && t >= CH[i + 1].t0) i++; return i; }
+function prevLines(i) { for (let j = i - 1; j >= 0; j--) if (CH[j].lines) return CH[j].lines; return CH[i].lines; }
+
+function updateHUD(t) {
+  const ci = chapterIdx(t), c = CH[ci];
+  if (ci !== shown) {
+    shown = ci;
+    if (c.num) {
+      $('cNum').textContent = c.num; $('cName').textContent = c.name; $('cSeason').textContent = c.season;
+      $('cChar').textContent = c.ch; $('cQuote').textContent = '「' + c.quote + '」';
+      hexName.textContent = c.name; sub.textContent = c.text;
+    }
+    document.querySelectorAll('.tick').forEach((el, k) => el.classList.toggle('on', +el.dataset.i <= ci));
+  }
+  const inC = c.num ? sstep(c.t0 + 0.2, c.t0 + 1.4, t) * (1 - sstep(c.t1 - 0.9, c.t1 - 0.1, t)) : 0;
+  card.style.opacity = inC;
+  sub.style.opacity = c.num ? sstep(c.t0 + 1.2, c.t0 + 2.4, t) * (1 - sstep(c.t1 - 1.1, c.t1 - 0.3, t)) : 0;
+  const hexOp = sstep(6.2, 7.4, t) * (1 - sstep(94, 95, t));
+  hex.style.opacity = hexOp; hexName.style.opacity = hexOp * inC;
+  if (c.lines) {
+    const from = prevLines(ci), k = sstep(c.t0, c.t0 + 1.6, t);
+    hexLines.forEach((el, i) => el.style.setProperty('--g', (lerp(1 - from[i], 1 - c.lines[i], k) * 18).toFixed(2) + '%'));
+  }
+
+  // 终章
+  const night = sstep(94.5, 97, t);
+  $('night').style.opacity = night;
+  document.body.classList.toggle('is-night', night > 0.5);
+  for (const el of timed) {
+    const a = +el.dataset.in, b = el.dataset.out ? +el.dataset.out : 1e9;
+    const o = sstep(a, a + 1.2, t) * (1 - sstep(b - 0.8, b, t));
+    el.style.opacity = o;
+    el.style.visibility = o < 0.01 ? 'hidden' : 'visible';
+  }
+  // 剥 → 复：顶上那根阳爻出去，从底下回来
+  const k1 = sstep(100.2, 101.8, t), k2 = sstep(101.4, 103, t), k3 = sstep(102.6, 104.4, t);
+  const BO = [0, 0, 0, 0, 0, 1];
+  bigLines.forEach((el, j) => {
+    let slot, op = 1;
+    if (j === 5) {
+      if (t < 102.6) { slot = 5 + 1.4 * k1; op = 1 - k1; } else { slot = -1.4 + 1.4 * k3; op = k3; }
+      el.style.setProperty('--c', '#efeee9');
+    } else slot = j + k2;
+    el.style.setProperty('--g', BO[j] ? '0%' : '18%');
+    el.style.top = ((5 - slot) / 5 * 88) + '%';
+    el.style.opacity = op;
+  });
+  const lit = t < 114.6 ? -1 : Math.floor((t - 114.6) / 0.55);
+  chainSpans.forEach((s, i) => s.classList.toggle('on', i <= lit));
+
+  $('fill').style.width = (t / END * 100) + '%';
+  $('track').setAttribute('aria-valuenow', t.toFixed(0));
+  const fmt = s => Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0');
+  $('clock').textContent = fmt(t) + ' / ' + fmt(END);
+}
+
+// 时间轴刻度
+const TICKS = [[1, '种'], [2, '真'], [3, '蓄'], [4, '养'], [5, '饰'], [6, '落'], [7, '复'], [8, '心']];
+for (const [i, label] of TICKS) {
+  const el = document.createElement('span'); el.className = 'tick'; el.textContent = label; el.dataset.i = i;
+  el.style.left = (CH[i].t0 / END * 100) + '%'; $('track').appendChild(el);
+}
+
+// ---------- 播放控制 ----------
+let t = 0, playing = true, last = performance.now();
+const playBtn = $('play');
+function setPlaying(p) { playing = p; playBtn.textContent = p ? '暂停' : '播放'; }
+playBtn.onclick = () => { if (!playing && t >= END) t = 0; setPlaying(!playing); };
+$('replay').onclick = () => { t = 0; setPlaying(true); };
+const track = $('track');
+function seekFrom(e) { const r = track.getBoundingClientRect(); t = clamp((e.clientX - r.left) / r.width) * END; }
+let dragging = false;
+track.addEventListener('pointerdown', e => { dragging = true; track.setPointerCapture(e.pointerId); seekFrom(e); });
+track.addEventListener('pointermove', e => { if (dragging) seekFrom(e); });
+track.addEventListener('pointerup', () => { dragging = false; track.blur(); });
+addEventListener('keydown', e => {
+  if (e.target.closest && e.target.closest('button')) return;
+  if (e.code === 'Space') { e.preventDefault(); playBtn.click(); }
+  if (e.key === 'ArrowRight') t = Math.min(END, t + 5);
+  if (e.key === 'ArrowLeft') t = Math.max(0, t - 5);
+});
+
+function resize() {
+  const w = innerWidth, h = innerHeight;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  const k = camera.aspect < 1.2 ? Math.min(2.0, 1.2 / camera.aspect) : 1;
+  camera.fov = 2 * Math.atan(Math.tan(20 * Math.PI / 180) * k) * 180 / Math.PI;
+  camera.updateProjectionMatrix();
+}
+addEventListener('resize', resize); resize();
+
+function frame(now) {
+  const dt = Math.min(0.1, (now - last) / 1000); last = now;
+  if (playing && !dragging) { t += dt; if (t >= END) { t = END; setPlaying(false); } }
+  updateScene(t); updateHUD(t);
+  renderer.render(scene, camera);
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+</script>
