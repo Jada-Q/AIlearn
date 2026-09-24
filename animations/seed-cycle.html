@@ -911,4 +911,10 @@ function frame(now) {
   requestAnimationFrame(frame);
 }
 requestAnimationFrame(frame);
+
+// 供录制 / 调试：跳到指定秒并立即渲染一帧
+window.seedCycle = {
+  END,
+  seek(x) { t = clamp(x, 0, END); setPlaying(false); updateScene(t); updateHUD(t); renderer.render(scene, camera); },
+};
 </script>
