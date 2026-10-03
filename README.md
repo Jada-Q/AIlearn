@@ -14,6 +14,7 @@
 - [10 — 和 AI 学技术：一次 1-2 个新概念的渐进式节奏](./docs/10-learning-tech-with-ai-pacing.md)
 - [11 — 当人人都会 Vibe Coding：差异化 = 离 AI 平均值的距离，不是奔向它的速度](./docs/11-differentiation-when-everyone-vibe-codes.md)
 - [40 — 我问 AI：把思考外包给你，我的大脑会不会退化（四种外包 / 慢吸收是提问的原料 / 链 vs 散点）](./docs/40-outsourcing-thinking-to-ai.md)
+- [43 — 软件开发者如何拉开差距：换轴，不卷代码（四条 AI 拉不平的轴）](./docs/43-developer-differentiation-axes.md)
 
 ### 希腊神话 × AI 系列（5 篇完结）
 
